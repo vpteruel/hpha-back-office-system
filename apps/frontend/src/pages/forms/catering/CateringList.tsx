@@ -99,14 +99,46 @@ const mockData: CateringRequest[] = [
 
 export function CateringList() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [sortConfig, setSortConfig] = useState<{
+    key: keyof CateringRequest | null;
+    direction: "asc" | "desc";
+  }>({ key: null, direction: "asc" });
   const itemsPerPage = 5;
 
-  const totalPages = Math.ceil(mockData.length / itemsPerPage);
+  const handleSort = (key: keyof CateringRequest) => {
+    let direction: "asc" | "desc" = "asc";
+    if (sortConfig.key === key && sortConfig.direction === "asc") {
+      direction = "desc";
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const sortedData = [...mockData].sort((a, b) => {
+    if (!sortConfig.key) return 0;
+
+    const aValue = a[sortConfig.key];
+    const bValue = b[sortConfig.key];
+
+    if (aValue < bValue) {
+      return sortConfig.direction === "asc" ? -1 : 1;
+    }
+    if (aValue > bValue) {
+      return sortConfig.direction === "asc" ? 1 : -1;
+    }
+    return 0;
+  });
+
+  const totalPages = Math.ceil(sortedData.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentItems = mockData.slice(startIndex, startIndex + itemsPerPage);
+  const currentItems = sortedData.slice(startIndex, startIndex + itemsPerPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const renderSortIcon = (key: keyof CateringRequest) => {
+    if (sortConfig.key !== key) return <span style={{ opacity: 0.3 }}>↕</span>;
+    return sortConfig.direction === "asc" ? "↑" : "↓";
   };
 
   return (
@@ -144,11 +176,36 @@ export function CateringList() {
           <table>
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Event Name</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Status</th>
+                <th
+                  onClick={() => handleSort("id")}
+                  style={{ cursor: "pointer" }}
+                >
+                  ID {renderSortIcon("id")}
+                </th>
+                <th
+                  onClick={() => handleSort("event_name")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Event Name {renderSortIcon("event_name")}
+                </th>
+                <th
+                  onClick={() => handleSort("event_date")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Date {renderSortIcon("event_date")}
+                </th>
+                <th
+                  onClick={() => handleSort("event_time")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Time {renderSortIcon("event_time")}
+                </th>
+                <th
+                  onClick={() => handleSort("status")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Status {renderSortIcon("status")}
+                </th>
                 <th>Actions</th>
               </tr>
             </thead>
