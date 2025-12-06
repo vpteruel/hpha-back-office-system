@@ -31,6 +31,6 @@ COPY --from=builder /app/apps/frontend/dist .
 # Copy nginx configuration
 COPY apps/frontend/nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["nginx", "-g", "daemon off;"]
