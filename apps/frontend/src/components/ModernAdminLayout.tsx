@@ -12,6 +12,14 @@ export function ModernAdminLayout({ children }: ModernAdminLayoutProps) {
 
   return (
     <div className="modern-admin-layout">
+      {/* Mobile Overlay */}
+      {!isSidebarCollapsed && (
+        <div
+          className="modern-sidebar-overlay"
+          onClick={() => setIsSidebarCollapsed(true)}
+        />
+      )}
+
       <ModernSidebar
         isCollapsed={isSidebarCollapsed}
         onToggle={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
@@ -21,6 +29,12 @@ export function ModernAdminLayout({ children }: ModernAdminLayoutProps) {
       >
         <header className="modern-header">
           <div className="modern-header-content">
+            <button
+              className="mobile-menu-btn"
+              onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+            >
+              ☰
+            </button>
             <div className="modern-search-bar">
               <span className="search-icon">🔍</span>
               <input type="text" placeholder="Search..." />

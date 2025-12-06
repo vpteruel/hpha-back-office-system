@@ -13,7 +13,7 @@
 .modern-main-content {
   flex: 1;
   margin-left: 280px;
-  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -23,6 +23,44 @@
 .modern-main-content.expanded {
   margin-left: 80px;
   width: calc(100% - 80px);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 8px;
+}
+
+.mobile-menu-btn:hover {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+/* Mobile Overlay */
+.modern-sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 45; /* Below sidebar (50) but above content */
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Modern Header */
@@ -35,6 +73,7 @@
   top: 0;
   z-index: 40;
   height: 70px;
+  width: 100%;
 }
 
 .modern-header-content {
@@ -46,6 +85,42 @@
   gap: 2rem;
   max-width: 1600px;
   margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modern-main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .modern-main-content.expanded {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modern-sidebar-overlay {
+    display: block;
+  }
+
+  .modern-header-content {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .modern-search-bar {
+    display: none; /* Hide search on mobile for space, or make it collapsible */
+  }
+
+  .modern-content {
+    padding: 1rem;
+  }
 }
 
 .modern-search-bar {
