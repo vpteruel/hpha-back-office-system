@@ -72,7 +72,7 @@ export function ModernSidebar({ isCollapsed, onToggle }: ModernSidebarProps) {
           )}
         </div>
         <button className="modern-toggle-btn" onClick={onToggle}>
-          {isCollapsed ? "→" : "←"}
+          {isCollapsed ? "❯" : "❮"}
         </button>
       </div>
 
