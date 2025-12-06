@@ -12,7 +12,6 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
   { id: "dashboard", label: "Dashboard", icon: "📊", path: "/" },
-  { id: "users", label: "Users", icon: "👥", path: "/users" },
   {
     id: "catering",
     label: "Catering",
@@ -45,6 +44,7 @@ const menuItems: MenuItem[] = [
     icon: "✈️",
     path: "/forms/travel-expense",
   },
+  { id: "users", label: "Users", icon: "👥", path: "/users" },
   { id: "settings", label: "Settings", icon: "⚙️", path: "/settings" },
 ];
 
