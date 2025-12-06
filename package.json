@@ -1,0 +1,8 @@
+{
+  "name": "poc-bunjs",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
