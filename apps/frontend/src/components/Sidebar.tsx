@@ -54,7 +54,7 @@ export function Sidebar({ isCollapsed }: SidebarProps) {
   return (
     <aside className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
       <div className="sidebar-header">
-        <div className="logo">{isCollapsed ? "🏢" : "🏢 Admin Panel"}</div>
+        <div className="logo">{isCollapsed ? "🏢" : "🏢 Forms Anyware"}</div>
       </div>
 
       <nav className="sidebar-nav">
