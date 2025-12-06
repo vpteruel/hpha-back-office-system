@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
 import "./Sidebar.css";
 
 interface MenuItem {
@@ -15,12 +15,6 @@ const menuItems: MenuItem[] = [
     label: "Catering Requisition",
     icon: "🍽️",
     path: "/forms/catering",
-  },
-  {
-    id: "surveillance",
-    label: "Video Surveillance",
-    icon: "📹",
-    path: "/forms/surveillance",
   },
   {
     id: "purchase",
@@ -40,6 +34,12 @@ const menuItems: MenuItem[] = [
     icon: "✈️",
     path: "/forms/travel-expense",
   },
+  {
+    id: "surveillance",
+    label: "Video Surveillance",
+    icon: "📹",
+    path: "/forms/surveillance",
+  },
   { id: "users", label: "Users", icon: "👥", path: "/users" },
   { id: "settings", label: "Settings", icon: "⚙️", path: "/settings" },
 ];
@@ -49,7 +49,8 @@ interface SidebarProps {
 }
 
 export function Sidebar({ isCollapsed }: SidebarProps) {
-  const [activeItem, setActiveItem] = useState("dashboard");
+  const routerState = useRouterState();
+  const currentPath = routerState.location.pathname;
 
   return (
     <aside className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
@@ -61,18 +62,14 @@ export function Sidebar({ isCollapsed }: SidebarProps) {
         <ul>
           {menuItems.map((item) => (
             <li key={item.id}>
-              <a
-                href={item.path}
-                className={`nav-item ${activeItem === item.id ? "active" : ""}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setActiveItem(item.id);
-                }}
+              <Link
+                to={item.path}
+                className={`nav-item ${currentPath === item.path ? "active" : ""}`}
                 title={isCollapsed ? item.label : undefined}
               >
                 <span className="icon">{item.icon}</span>
                 {!isCollapsed && <span className="label">{item.label}</span>}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

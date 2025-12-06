@@ -1,13 +1,9 @@
+import { RouterProvider } from "@tanstack/react-router";
 import "./App.css";
-import { AdminLayout } from "./components/AdminLayout";
-import { DashboardContent } from "./components/DashboardContent";
+import { router } from "./router";
 
 function App() {
-  return (
-    <AdminLayout>
-      <DashboardContent />
-    </AdminLayout>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
