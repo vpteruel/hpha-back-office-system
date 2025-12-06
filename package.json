@@ -1,5 +1,5 @@
 {
-  "name": "poc-bunjs",
+  "name": "back-office-system",
   "private": true,
   "workspaces": [
     "apps/*",

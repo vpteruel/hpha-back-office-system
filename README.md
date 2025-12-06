@@ -1,11 +1,11 @@
-# POC BunJS Monorepo
+# Back Office System Monorepo
 
 A full-stack TypeScript monorepo using Bun, featuring a React frontend and Elysia backend with shared types.
 
 ## 🏗️ Project Structure
 
 ```
-poc-bunjs/
+back-office-system/
 ├── apps/
 │   ├── backend/          # Elysia API server
 │   └── frontend/         # React + Vite app
@@ -80,15 +80,15 @@ docker-compose up --build
 ### Backend
 ```bash
 cd apps/backend
-docker build -t poc-bunjs-backend .
-docker run -p 5000:5000 poc-bunjs-backend
+docker build -t back-office-system-backend .
+docker run -p 5000:5000 back-office-system-backend
 ```
 
 ### Frontend
 ```bash
 cd apps/frontend
-docker build -t poc-bunjs-frontend .
-docker run -p 80:80 poc-bunjs-frontend
+docker build -t back-office-system-frontend .
+docker run -p 80:80 back-office-system-frontend
 ```
 
 The frontend uses nginx for optimal static file serving with:

@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "poc-bunjs",
+      "name": "back-office-system",
     },
     "apps/backend": {
       "name": "backend",
