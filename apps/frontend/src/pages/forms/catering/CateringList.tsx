@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import type { Column } from "../../../components/DataTable";
+import { DataTable } from "../../../components/DataTable";
 import "../../pages.css";
 
 interface CateringRequest {
@@ -95,51 +96,183 @@ const mockData: CateringRequest[] = [
     event_time: "07:00 PM",
     status: "Pending",
   },
+  {
+    id: "CAT-013",
+    event_name: "Strategy Meeting",
+    event_date: "2026-03-01",
+    event_time: "10:00 AM",
+    status: "Approved",
+  },
+  {
+    id: "CAT-014",
+    event_name: "Department Lunch",
+    event_date: "2026-03-05",
+    event_time: "12:30 PM",
+    status: "Rejected",
+  },
+  {
+    id: "CAT-015",
+    event_name: "Vendor Presentation",
+    event_date: "2026-03-10",
+    event_time: "03:00 PM",
+    status: "Pending",
+  },
+  {
+    id: "CAT-016",
+    event_name: "Board Meeting",
+    event_date: "2026-03-15",
+    event_time: "09:00 AM",
+    status: "Approved",
+  },
+  {
+    id: "CAT-017",
+    event_name: "Team Outing",
+    event_date: "2026-03-20",
+    event_time: "01:00 PM",
+    status: "Pending",
+  },
+  {
+    id: "CAT-018",
+    event_name: "Project Review",
+    event_date: "2026-04-01",
+    event_time: "11:00 AM",
+    status: "Approved",
+  },
+  {
+    id: "CAT-019",
+    event_name: "Client Workshop",
+    event_date: "2026-04-05",
+    event_time: "02:00 PM",
+    status: "Rejected",
+  },
+  {
+    id: "CAT-020",
+    event_name: "Holiday Celebration",
+    event_date: "2026-04-10",
+    event_time: "06:00 PM",
+    status: "Approved",
+  },
+  {
+    id: "CAT-021",
+    event_name: "Team Meeting",
+    event_date: "2026-04-15",
+    event_time: "10:00 AM",
+    status: "Pending",
+  },
+  {
+    id: "CAT-022",
+    event_name: "Budget Planning",
+    event_date: "2026-04-20",
+    event_time: "09:00 AM",
+    status: "Approved",
+  },
+  {
+    id: "CAT-023",
+    event_name: "Executive Briefing",
+    event_date: "2026-04-25",
+    event_time: "11:00 AM",
+    status: "Pending",
+  },
+  {
+    id: "CAT-024",
+    event_name: "Sales Meeting",
+    event_date: "2026-05-01",
+    event_time: "02:00 PM",
+    status: "Approved",
+  },
+  {
+    id: "CAT-025",
+    event_name: "Product Demo",
+    event_date: "2026-05-05",
+    event_time: "03:00 PM",
+    status: "Rejected",
+  },
+  {
+    id: "CAT-026",
+    event_name: "Marketing Strategy Session",
+    event_date: "2026-05-10",
+    event_time: "01:00 PM",
+    status: "Pending",
+  },
+  {
+    id: "CAT-027",
+    event_name: "Client Appreciation Event",
+    event_date: "2026-05-15",
+    event_time: "07:00 PM",
+    status: "Approved",
+  },
+  {
+    id: "CAT-028",
+    event_name: "Annual Review Meeting",
+    event_date: "2026-05-20",
+    event_time: "09:00 AM",
+    status: "Pending",
+  },
+  {
+    id: "CAT-029",
+    event_name: "Team Training Session",
+    event_date: "2026-06-01",
+    event_time: "10:00 AM",
+    status: "Approved",
+  },
+  {
+    id: "CAT-030",
+    event_name: "Company Picnic",
+    event_date: "2026-06-05",
+    event_time: "12:00 PM",
+    status: "Rejected",
+  },
+  {
+    id: "CAT-031",
+    event_name: "Innovation Workshop",
+    event_date: "2026-06-10",
+    event_time: "02:00 PM",
+    status: "Pending",
+  },
 ];
 
 export function CateringList() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [sortConfig, setSortConfig] = useState<{
-    key: keyof CateringRequest | null;
-    direction: "asc" | "desc";
-  }>({ key: null, direction: "asc" });
-  const itemsPerPage = 5;
-
-  const handleSort = (key: keyof CateringRequest) => {
-    let direction: "asc" | "desc" = "asc";
-    if (sortConfig.key === key && sortConfig.direction === "asc") {
-      direction = "desc";
-    }
-    setSortConfig({ key, direction });
-  };
-
-  const sortedData = [...mockData].sort((a, b) => {
-    if (!sortConfig.key) return 0;
-
-    const aValue = a[sortConfig.key];
-    const bValue = b[sortConfig.key];
-
-    if (aValue < bValue) {
-      return sortConfig.direction === "asc" ? -1 : 1;
-    }
-    if (aValue > bValue) {
-      return sortConfig.direction === "asc" ? 1 : -1;
-    }
-    return 0;
-  });
-
-  const totalPages = Math.ceil(sortedData.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentItems = sortedData.slice(startIndex, startIndex + itemsPerPage);
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  const renderSortIcon = (key: keyof CateringRequest) => {
-    if (sortConfig.key !== key) return <span style={{ opacity: 0.3 }}>↕</span>;
-    return sortConfig.direction === "asc" ? "↑" : "↓";
-  };
+  const columns: Column<CateringRequest>[] = [
+    { key: "id", header: "ID", sortable: true },
+    { key: "event_name", header: "Event Name", sortable: true },
+    { key: "event_date", header: "Date", sortable: true },
+    { key: "event_time", header: "Time", sortable: true },
+    {
+      key: "status",
+      header: "Status",
+      sortable: true,
+      render: (item) => (
+        <span
+          className={`badge ${
+            item.status === "Approved"
+              ? "success"
+              : item.status === "Pending"
+                ? "warning"
+                : "error"
+          }`}
+        >
+          {item.status}
+        </span>
+      ),
+    },
+    {
+      key: "actions",
+      header: "Actions",
+      render: (item) => (
+        <Link
+          to="/forms/catering/$id"
+          params={{ id: item.id }}
+          style={{
+            color: "var(--accent-color)",
+            textDecoration: "none",
+            fontWeight: 500,
+          }}
+        >
+          View
+        </Link>
+      ),
+    },
+  ];
 
   return (
     <div className="list-page">
@@ -172,148 +305,7 @@ export function CateringList() {
         </div>
       </div>
       <div className="list-container">
-        <div className="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th
-                  onClick={() => handleSort("id")}
-                  style={{ cursor: "pointer" }}
-                >
-                  ID {renderSortIcon("id")}
-                </th>
-                <th
-                  onClick={() => handleSort("event_name")}
-                  style={{ cursor: "pointer" }}
-                >
-                  Event Name {renderSortIcon("event_name")}
-                </th>
-                <th
-                  onClick={() => handleSort("event_date")}
-                  style={{ cursor: "pointer" }}
-                >
-                  Date {renderSortIcon("event_date")}
-                </th>
-                <th
-                  onClick={() => handleSort("event_time")}
-                  style={{ cursor: "pointer" }}
-                >
-                  Time {renderSortIcon("event_time")}
-                </th>
-                <th
-                  onClick={() => handleSort("status")}
-                  style={{ cursor: "pointer" }}
-                >
-                  Status {renderSortIcon("status")}
-                </th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentItems.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.id}</td>
-                  <td>{item.event_name}</td>
-                  <td>{item.event_date}</td>
-                  <td>{item.event_time}</td>
-                  <td>
-                    <span
-                      className={`badge ${
-                        item.status === "Approved"
-                          ? "success"
-                          : item.status === "Pending"
-                            ? "warning"
-                            : "error"
-                      }`}
-                    >
-                      {item.status}
-                    </span>
-                  </td>
-                  <td>
-                    <Link
-                      to="/forms/catering/$id"
-                      params={{ id: item.id }}
-                      style={{
-                        color: "var(--accent-color)",
-                        textDecoration: "none",
-                        fontWeight: 500,
-                      }}
-                    >
-                      View
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div
-          className="pagination-controls"
-          style={{
-            marginTop: "1.5rem",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <span style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
-            Showing {startIndex + 1} to{" "}
-            {Math.min(startIndex + itemsPerPage, mockData.length)} of{" "}
-            {mockData.length} entries
-          </span>
-          <div style={{ display: "flex", gap: "0.5rem" }}>
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-              style={{
-                padding: "0.5rem 1rem",
-                border: "1px solid var(--border-color)",
-                borderRadius: "0.5rem",
-                background: "var(--bg-tertiary)",
-                color: "var(--text-primary)",
-                cursor: currentPage === 1 ? "not-allowed" : "pointer",
-                opacity: currentPage === 1 ? 0.5 : 1,
-              }}
-            >
-              Previous
-            </button>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <button
-                key={page}
-                onClick={() => handlePageChange(page)}
-                style={{
-                  padding: "0.5rem 1rem",
-                  border: "1px solid var(--border-color)",
-                  borderRadius: "0.5rem",
-                  background:
-                    currentPage === page
-                      ? "var(--accent-color)"
-                      : "var(--bg-tertiary)",
-                  color: currentPage === page ? "white" : "var(--text-primary)",
-                  cursor: "pointer",
-                }}
-              >
-                {page}
-              </button>
-            ))}
-            <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-              style={{
-                padding: "0.5rem 1rem",
-                border: "1px solid var(--border-color)",
-                borderRadius: "0.5rem",
-                background: "var(--bg-tertiary)",
-                color: "var(--text-primary)",
-                cursor: currentPage === totalPages ? "not-allowed" : "pointer",
-                opacity: currentPage === totalPages ? 0.5 : 1,
-              }}
-            >
-              Next
-            </button>
-          </div>
-        </div>
+        <DataTable data={mockData} columns={columns} itemsPerPage={5} />
       </div>
     </div>
   );
