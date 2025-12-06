@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { useState } from "react";
 import "../../pages.css";
 
 interface CateringRequest {
@@ -45,9 +46,69 @@ const mockData: CateringRequest[] = [
     event_time: "10:00 AM",
     status: "Rejected",
   },
+  {
+    id: "CAT-006",
+    event_name: "Annual General Meeting",
+    event_date: "2026-01-10",
+    event_time: "09:00 AM",
+    status: "Pending",
+  },
+  {
+    id: "CAT-007",
+    event_name: "Marketing Workshop",
+    event_date: "2026-01-15",
+    event_time: "01:00 PM",
+    status: "Approved",
+  },
+  {
+    id: "CAT-008",
+    event_name: "Sales Training",
+    event_date: "2026-01-20",
+    event_time: "08:30 AM",
+    status: "Pending",
+  },
+  {
+    id: "CAT-009",
+    event_name: "Product Launch",
+    event_date: "2026-02-01",
+    event_time: "06:00 PM",
+    status: "Approved",
+  },
+  {
+    id: "CAT-010",
+    event_name: "Executive Retreat",
+    event_date: "2026-02-10",
+    event_time: "12:00 PM",
+    status: "Rejected",
+  },
+  {
+    id: "CAT-011",
+    event_name: "New Hire Orientation",
+    event_date: "2026-02-15",
+    event_time: "09:00 AM",
+    status: "Approved",
+  },
+  {
+    id: "CAT-012",
+    event_name: "Client Dinner",
+    event_date: "2026-02-20",
+    event_time: "07:00 PM",
+    status: "Pending",
+  },
 ];
 
 export function CateringList() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const totalPages = Math.ceil(mockData.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentItems = mockData.slice(startIndex, startIndex + itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div className="list-page">
       <div className="page-header">
@@ -92,7 +153,7 @@ export function CateringList() {
               </tr>
             </thead>
             <tbody>
-              {mockData.map((item) => (
+              {currentItems.map((item) => (
                 <tr key={item.id}>
                   <td>{item.id}</td>
                   <td>{item.event_name}</td>
@@ -128,6 +189,73 @@ export function CateringList() {
               ))}
             </tbody>
           </table>
+        </div>
+
+        <div
+          className="pagination-controls"
+          style={{
+            marginTop: "1.5rem",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <span style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
+            Showing {startIndex + 1} to{" "}
+            {Math.min(startIndex + itemsPerPage, mockData.length)} of{" "}
+            {mockData.length} entries
+          </span>
+          <div style={{ display: "flex", gap: "0.5rem" }}>
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              style={{
+                padding: "0.5rem 1rem",
+                border: "1px solid var(--border-color)",
+                borderRadius: "0.5rem",
+                background: "var(--bg-tertiary)",
+                color: "var(--text-primary)",
+                cursor: currentPage === 1 ? "not-allowed" : "pointer",
+                opacity: currentPage === 1 ? 0.5 : 1,
+              }}
+            >
+              Previous
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => handlePageChange(page)}
+                style={{
+                  padding: "0.5rem 1rem",
+                  border: "1px solid var(--border-color)",
+                  borderRadius: "0.5rem",
+                  background:
+                    currentPage === page
+                      ? "var(--accent-color)"
+                      : "var(--bg-tertiary)",
+                  color: currentPage === page ? "white" : "var(--text-primary)",
+                  cursor: "pointer",
+                }}
+              >
+                {page}
+              </button>
+            ))}
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              style={{
+                padding: "0.5rem 1rem",
+                border: "1px solid var(--border-color)",
+                borderRadius: "0.5rem",
+                background: "var(--bg-tertiary)",
+                color: "var(--text-primary)",
+                cursor: currentPage === totalPages ? "not-allowed" : "pointer",
+                opacity: currentPage === totalPages ? 0.5 : 1,
+              }}
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </div>
