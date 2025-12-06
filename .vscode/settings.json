@@ -1,0 +1,16 @@
+{
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.sortImports": "explicit"
+    },
+    "editor.defaultFormatter": "prettier.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.sortImports": "explicit"
+    },
+    "editor.defaultFormatter": "prettier.prettier-vscode"
+  }
+}
