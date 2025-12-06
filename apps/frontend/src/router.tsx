@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-router";
 import { AdminLayout } from "./components/AdminLayout";
 import { DashboardContent } from "./components/DashboardContent";
+import { ModernAdminLayout } from "./components/ModernAdminLayout";
 import { CateringDetail } from "./pages/forms/catering/CateringDetail";
 import { CateringForm } from "./pages/forms/catering/CateringForm";
 import { CateringList } from "./pages/forms/catering/CateringList";
@@ -27,9 +28,9 @@ import { UsersPage } from "./pages/users/UsersPage";
 // Root route with AdminLayout
 const rootRoute = createRootRoute({
   component: () => (
-    <AdminLayout>
+    <ModernAdminLayout>
       <Outlet />
-    </AdminLayout>
+    </ModernAdminLayout>
   ),
 });
 
