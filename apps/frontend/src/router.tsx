@@ -4,7 +4,6 @@ import {
   createRouter,
   Outlet,
 } from "@tanstack/react-router";
-import { AdminLayout } from "./components/AdminLayout";
 import { DashboardContent } from "./components/DashboardContent";
 import { ModernAdminLayout } from "./components/ModernAdminLayout";
 import { CateringDetail } from "./pages/forms/catering/CateringDetail";

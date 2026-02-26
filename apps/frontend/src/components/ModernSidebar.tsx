@@ -63,11 +63,11 @@ export function ModernSidebar({ isCollapsed, onToggle }: ModernSidebarProps) {
       {/* Sidebar Header */}
       <div className="modern-sidebar-header">
         <div className="modern-logo">
-          <div className="logo-icon">{isCollapsed ? "📋" : "📋"}</div>
+          <div className="logo-icon">{isCollapsed ? "🏥" : "🏥"}</div>
           {!isCollapsed && (
             <div className="logo-text">
-              <span className="logo-title">Forms</span>
-              <span className="logo-subtitle">Anywhere</span>
+              <span className="logo-title">Back Office</span>
+              <span className="logo-subtitle">System</span>
             </div>
           )}
         </div>
