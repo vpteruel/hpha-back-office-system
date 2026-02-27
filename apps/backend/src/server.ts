@@ -2,7 +2,7 @@ import { cors } from "@elysiajs/cors";
 import type { CreateUserDto, User } from "@shared/lib";
 import { Elysia } from "elysia";
 
-import { db } from "./db/schema";
+import { db } from "./db";
 import { users } from "./db/schema/users";
 
 const app = new Elysia();
