@@ -22,3 +22,6 @@ sketch
 
 # Local History for Visual Studio Code
 .history/
+
+# SQLite database
+apps/backend/sqlite.db

@@ -1,6 +1,6 @@
-import { Database } from "bun:sqlite";
-import { drizzle } from "drizzle-orm/bun-sqlite";
+export * from "./automation-runs";
+export * from "./automations";
+export * from "./close-expired-opportunities";
+export * from "./close-expired-opportunities-runs";
+export * from "./users";
 
-const sqlite = new Database("sqlite.db");
-
-export const db = drizzle(sqlite);

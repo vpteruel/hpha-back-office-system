@@ -15,6 +15,7 @@
     "elysia": "latest"
   },
   "devDependencies": {
+    "better-sqlite3": "^12.6.2",
     "bun-types": "latest",
     "drizzle-kit": "^0.31.9"
   },
