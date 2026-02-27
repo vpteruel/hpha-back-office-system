@@ -63,6 +63,19 @@ const menuGroups: MenuGroup[] = [
     ],
   },
   {
+    id: "automations",
+    title: "Automations",
+    items: [
+      {
+        id: "close-expired-opportunities",
+        label: "Close Expired Opportunities",
+        icon: "⏳",
+        path: "/automations/close-expired-opportunities",
+        badge: "2",
+      },
+    ],
+  },
+  {
     id: "system",
     title: "System",
     items: [
