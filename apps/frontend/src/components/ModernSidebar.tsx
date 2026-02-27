@@ -10,42 +10,66 @@ interface MenuItem {
   badge?: string;
 }
 
-const menuItems: MenuItem[] = [
-  { id: "dashboard", label: "Dashboard", icon: "📊", path: "/" },
+interface MenuGroup {
+  id: string;
+  title: string;
+  items: MenuItem[];
+}
+
+const menuGroups: MenuGroup[] = [
   {
-    id: "catering",
-    label: "Catering",
-    icon: "🍽️",
-    path: "/forms/catering",
-    badge: "2",
+    id: "main",
+    title: "Main",
+    items: [
+      { id: "dashboard", label: "Dashboard", icon: "📊", path: "/" },
+    ],
   },
   {
-    id: "surveillance",
-    label: "Surveillance",
-    icon: "📹",
-    path: "/forms/surveillance",
+    id: "forms",
+    title: "Forms",
+    items: [
+      {
+        id: "catering",
+        label: "Catering",
+        icon: "🍽️",
+        path: "/forms/catering",
+        badge: "2",
+      },
+      {
+        id: "surveillance",
+        label: "Surveillance",
+        icon: "📹",
+        path: "/forms/surveillance",
+      },
+      {
+        id: "purchase",
+        label: "Purchase",
+        icon: "🛒",
+        path: "/forms/purchase",
+        badge: "5",
+      },
+      {
+        id: "personal-expense",
+        label: "Personal Expense",
+        icon: "💳",
+        path: "/forms/personal-expense",
+      },
+      {
+        id: "travel-expense",
+        label: "Travel Expense",
+        icon: "✈️",
+        path: "/forms/travel-expense",
+      },
+    ],
   },
   {
-    id: "purchase",
-    label: "Purchase",
-    icon: "🛒",
-    path: "/forms/purchase",
-    badge: "5",
+    id: "system",
+    title: "System",
+    items: [
+      { id: "users", label: "Users", icon: "👥", path: "/users" },
+      { id: "settings", label: "Settings", icon: "⚙️", path: "/settings" },
+    ],
   },
-  {
-    id: "personal-expense",
-    label: "Personal Expense",
-    icon: "💳",
-    path: "/forms/personal-expense",
-  },
-  {
-    id: "travel-expense",
-    label: "Travel Expense",
-    icon: "✈️",
-    path: "/forms/travel-expense",
-  },
-  { id: "users", label: "Users", icon: "👥", path: "/users" },
-  { id: "settings", label: "Settings", icon: "⚙️", path: "/settings" },
 ];
 
 interface ModernSidebarProps {
@@ -78,36 +102,44 @@ export function ModernSidebar({ isCollapsed, onToggle }: ModernSidebarProps) {
 
       {/* Sidebar Navigation */}
       <nav className="modern-sidebar-nav">
-        <ul>
-          {menuItems.map((item) => {
-            const isActive = currentPath === item.path;
-            const isHovered = hoveredItem === item.id;
+        {menuGroups.map((group) => (
+          <div key={group.id} className="modern-sidebar-group">
+            {!isCollapsed && (
+              <h3 className="modern-sidebar-group-title">{group.title}</h3>
+            )}
+            {isCollapsed && <div className="modern-sidebar-group-divider" />}
+            <ul>
+              {group.items.map((item) => {
+                const isActive = currentPath === item.path;
+                const isHovered = hoveredItem === item.id;
 
-            return (
-              <li key={item.id}>
-                <Link
-                  to={item.path}
-                  className={`modern-nav-item ${isActive ? "active" : ""}`}
-                  onMouseEnter={() => setHoveredItem(item.id)}
-                  onMouseLeave={() => setHoveredItem(null)}
-                >
-                  <span className="modern-nav-icon">{item.icon}</span>
-                  {!isCollapsed && (
-                    <>
-                      <span className="modern-nav-label">{item.label}</span>
-                      {item.badge && (
-                        <span className="modern-nav-badge">{item.badge}</span>
+                return (
+                  <li key={item.id}>
+                    <Link
+                      to={item.path}
+                      className={`modern-nav-item ${isActive ? "active" : ""}`}
+                      onMouseEnter={() => setHoveredItem(item.id)}
+                      onMouseLeave={() => setHoveredItem(null)}
+                    >
+                      <span className="modern-nav-icon">{item.icon}</span>
+                      {!isCollapsed && (
+                        <>
+                          <span className="modern-nav-label">{item.label}</span>
+                          {item.badge && (
+                            <span className="modern-nav-badge">{item.badge}</span>
+                          )}
+                        </>
                       )}
-                    </>
-                  )}
-                  {isCollapsed && isHovered && (
-                    <div className="modern-tooltip">{item.label}</div>
-                  )}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+                      {isCollapsed && isHovered && (
+                        <div className="modern-tooltip">{item.label}</div>
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
       </nav>
 
       {/* Sidebar Footer */}
