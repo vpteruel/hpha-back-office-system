@@ -1,11 +1,11 @@
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
-import { closeExpiredOpportunitiesRuns } from "./close-expired-opportunities-runs";
+import { closedPositionsRuns } from "./closed-positions-runs";
 
-export const closeExpiredOpportunities = sqliteTable("close_expired_opportunities", {
+export const closedPositions = sqliteTable("closed_positions", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   runId: integer("run_id")
     .notNull()
-    .references(() => closeExpiredOpportunitiesRuns.id),
+    .references(() => closedPositionsRuns.id),
   title: text("title").notNull(),
   requisition: text("requisition"),
   location: text("location"),

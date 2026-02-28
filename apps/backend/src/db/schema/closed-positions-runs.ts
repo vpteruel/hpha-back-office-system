@@ -1,8 +1,8 @@
 import { integer, sqliteTable } from "drizzle-orm/sqlite-core";
 import { automationRuns } from "./automation-runs";
 
-export const closeExpiredOpportunitiesRuns = sqliteTable(
-  "close_expired_opportunities_runs",
+export const closedPositionsRuns = sqliteTable(
+  "closed_positions_runs",
   {
     id: integer("id").primaryKey({ autoIncrement: true }),
     automationRunId: integer("automation_run_id")
