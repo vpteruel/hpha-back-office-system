@@ -45,17 +45,39 @@ export function AutomationDetail() {
     <div className="detail-page">
       <div className="page-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <Link to="/automations" style={{ color: "var(--accent-color)", textDecoration: "none", fontWeight: 500 }}>← Back</Link>
-          <h1>{automation.name}</h1>
+          <Link to="/automations" style={{ color: "var(--accent-color)", textDecoration: "none", fontWeight: 600 }}>← Back to Automations</Link>
+          <h1 style={{ margin: 0 }}>{automation.name}</h1>
         </div>
-        <p>{automation.description || "No description"}</p>
+        <p style={{ marginTop: '0.5rem' }}>{automation.description || "No description provided."}</p>
       </div>
 
-      <div className="detail-container">
-        <section className="detail-section">
-          <h2>Run History</h2>
+      <div className="dashboard-layout">
+        {/* KPI Statistics */}
+        <div className="stats-grid">
+           <div className="stat-card">
+            <span className="stat-label">Total Runs</span>
+            <span className="stat-value highlight">{runs.length}</span>
+          </div>
+          <div className="stat-card">
+            <span className="stat-label">Created At</span>
+            <span className="stat-value">{new Date(automation.createdAt).toLocaleDateString()}</span>
+          </div>
+          <div className="stat-card">
+            <span className="stat-label">Status</span>
+            <span className="stat-value">
+              <span className={`status-badge ${automation.isActive ? 'status-active' : 'status-inactive'}`}>
+                {automation.isActive ? "Active" : "Inactive"}
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <section className="dashboard-panel">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem', marginBottom: '0.5rem' }}>
+             <h2 style={{ borderBottom: 'none', paddingBottom: 0, margin: 0 }}>Run History</h2>
+          </div>
           <div className="table-wrapper">
-            <table>
+            <table className="modern-data-table">
               <thead>
                 <tr>
                   <th>Run ID</th>
@@ -82,7 +104,7 @@ export function AutomationDetail() {
                       <td>
                         {run.summary}
                         {run.errorMessage && (
-                          <div className="error-text" style={{ fontSize: '0.8rem', color: 'var(--error-text)' }}>
+                          <div className="error-text" style={{ fontSize: '0.8rem', color: 'var(--error-text)', marginTop: '0.25rem' }}>
                             {run.errorMessage}
                           </div>
                         )}

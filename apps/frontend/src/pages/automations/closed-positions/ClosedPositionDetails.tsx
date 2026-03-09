@@ -36,33 +36,48 @@ export function ClosedPositionDetails() {
     <div className="detail-page">
       <div className="page-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <Link to="/automations/closed-positions" style={{ color: "var(--accent-color)", textDecoration: "none", fontWeight: 500 }}>← Back</Link>
-          <h1>{position.title}</h1>
+          <Link to="/automations/closed-positions" style={{ color: "var(--accent-color)", textDecoration: "none", fontWeight: 600 }}>← Back to List</Link>
+          <h1 style={{ margin: 0 }}>{position.title}</h1>
         </div>
-        <p>Requisition: {position.requisition || "N/A"}</p>
+        <p style={{ marginTop: '0.5rem' }}>Requisition: {position.requisition || "N/A"}</p>
       </div>
 
-      <div className="detail-container">
-        <section className="detail-section">
-          <h2>Position Information</h2>
-          <div className="info-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1rem' }}>
-            <div className="info-item">
-              <strong>Location:</strong> {position.location || "N/A"}
+      <div className="dashboard-layout">
+        {/* KPI Statistics */}
+        <div className="stats-grid">
+          <div className="stat-card">
+            <span className="stat-label">Applications</span>
+            <span className="stat-value highlight">{position.applicationsCount}</span>
+          </div>
+          <div className="stat-card">
+            <span className="stat-label">Location</span>
+            <span className="stat-value">{position.location || "N/A"}</span>
+          </div>
+          <div className="stat-card">
+            <span className="stat-label">Posted Date</span>
+            <span className="stat-value">{position.postedDate ? new Date(position.postedDate).toLocaleDateString() : "N/A"}</span>
+          </div>
+          <div className="stat-card">
+            <span className="stat-label">Closed Date</span>
+            <span className="stat-value">{position.closedDate ? new Date(position.closedDate).toLocaleDateString() : "N/A"}</span>
+          </div>
+        </div>
+
+        {/* Detailed System Info */}
+        <section className="dashboard-panel">
+          <h2>System Information</h2>
+          <div className="panel-info-grid">
+            <div className="panel-info-item">
+              <span className="panel-info-label">Run ID</span>
+              <span className="panel-info-value">#{position.runId}</span>
             </div>
-            <div className="info-item">
-              <strong>Applications Count:</strong> {position.applicationsCount}
+            <div className="panel-info-item">
+              <span className="panel-info-label">Database ID</span>
+              <span className="panel-info-value">{position.id}</span>
             </div>
-            <div className="info-item">
-              <strong>Posted Date:</strong> {position.postedDate || "N/A"}
-            </div>
-            <div className="info-item">
-              <strong>Closed Date:</strong> {position.closedDate || "N/A"}
-            </div>
-            <div className="info-item">
-              <strong>Run ID:</strong> {position.runId}
-            </div>
-            <div className="info-item">
-              <strong>Database ID:</strong> {position.id}
+            <div className="panel-info-item">
+              <span className="panel-info-label">Requisition</span>
+              <span className="panel-info-value">{position.requisition || "N/A"}</span>
             </div>
           </div>
         </section>

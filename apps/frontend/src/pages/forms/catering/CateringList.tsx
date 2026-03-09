@@ -305,7 +305,7 @@ export function CateringList() {
         </div>
       </div>
       <div className="list-container">
-        <DataTable data={mockData} columns={columns} itemsPerPage={5} />
+        <DataTable data={mockData} columns={columns} itemsPerPage={10} />
       </div>
     </div>
   );
