@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
@@ -7,61 +9,105 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Light Mode Variables */
-  --bg-primary: #f1f5f9;
+  /* Modern Vibrant Light Mode Variables */
+  --bg-primary: #f4f7fb;
   --bg-secondary: #ffffff;
   --bg-tertiary: #f8fafc;
-  --text-primary: #1e293b;
+  
+  /* Text */
+  --text-primary: #0f172a;
   --text-secondary: #64748b;
-  --border-color: #e2e8f0;
+  --text-inverse: #ffffff;
+  
+  /* Subtle Borders & Glass */
+  --border-color: rgba(226, 232, 240, 0.8);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.4);
+
+  /* Gradients & Accents */
   --accent-color: #6366f1;
   --accent-hover: #4f46e5;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --header-bg: rgba(255, 255, 255, 0.8);
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+  
+  /* Premium Shadows */
+  --shadow-sm: 0 2px 4px rgba(148, 163, 184, 0.1);
+  --shadow-md: 0 10px 25px -5px rgba(148, 163, 184, 0.15), 0 8px 10px -6px rgba(148, 163, 184, 0.1);
+  --shadow-lg: 0 20px 30px -10px rgba(148, 163, 184, 0.2);
+  --shadow-colored: 0 10px 20px -5px rgba(99, 102, 241, 0.3);
+  
+  /* UI Elements */
+  --header-bg: rgba(255, 255, 255, 0.85);
   --sidebar-bg: rgba(255, 255, 255, 0.95);
   --input-bg: #ffffff;
-  --hover-bg: #f1f5f9;
-  --active-bg: #eff6ff;
-  --active-text: #2563eb;
+  --hover-bg: #f8fafc;
+  --active-bg: rgba(99, 102, 241, 0.08);
+  --active-text: #4f46e5;
 
   /* Status Colors */
-  --success-bg: #d1fae5;
-  --success-text: #065f46;
-  --warning-bg: #fef3c7;
-  --warning-text: #92400e;
+  --success-bg: #dcfce7;
+  --success-text: #166534;
+  --success-gradient: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+  
+  --warning-bg: #fef9c3;
+  --warning-text: #854d0e;
+  --warning-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  
   --error-bg: #fee2e2;
   --error-text: #991b1b;
+  --error-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  
   --info-bg: #dbeafe;
   --info-text: #1e40af;
+  --info-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
 }
 
 .dark {
-  /* Dark Mode Variables */
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
+  /* Modern Vibrant Dark Mode Variables */
+  --bg-primary: #0b0f19;
+  --bg-secondary: #131b2c;
+  --bg-tertiary: #1e293b;
+  
+  /* Text */
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
-  --border-color: #334155;
+  --text-inverse: #ffffff;
+  
+  /* Subtle Borders & Glass */
+  --border-color: rgba(51, 65, 85, 0.6);
+  --glass-bg: rgba(19, 27, 44, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.05);
+
+  /* Gradients & Accents */
   --accent-color: #818cf8;
   --accent-hover: #6366f1;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5);
-  --header-bg: rgba(30, 41, 59, 0.8);
-  --sidebar-bg: rgba(30, 41, 59, 0.95);
-  --input-bg: #0f172a;
-  --hover-bg: #334155;
-  --active-bg: rgba(37, 99, 235, 0.2);
-  --active-text: #60a5fa;
+  --accent-gradient: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  
+  /* Premium Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 20px 30px -10px rgba(0, 0, 0, 0.6);
+  --shadow-colored: 0 10px 25px -5px rgba(129, 140, 248, 0.25);
+  
+  /* UI Elements */
+  --header-bg: rgba(15, 23, 42, 0.85);
+  --sidebar-bg: rgba(15, 23, 42, 0.95);
+  --input-bg: #0b0f19;
+  --hover-bg: rgba(51, 65, 85, 0.4);
+  --active-bg: rgba(129, 140, 248, 0.15);
+  --active-text: #a5b4fc;
 
   /* Status Colors Dark */
-  --success-bg: rgba(6, 95, 70, 0.3);
-  --success-text: #6ee7b7;
-  --warning-bg: rgba(146, 64, 14, 0.3);
-  --warning-text: #fcd34d;
+  --success-bg: rgba(22, 101, 52, 0.3);
+  --success-text: #86efac;
+  
+  --warning-bg: rgba(133, 77, 14, 0.3);
+  --warning-text: #fde047;
+  
   --error-bg: rgba(153, 27, 27, 0.3);
   --error-text: #fca5a5;
+  
   --info-bg: rgba(30, 64, 175, 0.3);
   --info-text: #93c5fd;
 }
@@ -71,6 +117,9 @@ body {
   min-height: 100vh;
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  /* Apply subtle background pattern for premium feel */
+  background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 #root {
@@ -79,12 +128,32 @@ body {
 
 * {
   box-sizing: border-box;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    fill 0.3s ease,
-    stroke 0.3s ease,
-    opacity 0.3s ease;
+}
+
+/* Base smooth transitions for interaction elements only, not everything */
+a, button, input, select, .status-badge, .info-item {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global specific styles */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+}
+
+/* Glassmorphism utilities */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+  border-radius: 1.25rem;
+}
+
+/* Fancy Gradients */
+.text-gradient {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
