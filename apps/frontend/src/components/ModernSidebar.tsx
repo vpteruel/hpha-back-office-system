@@ -101,6 +101,23 @@ export function ModernSidebar({ isCollapsed, onToggle }: ModernSidebarProps) {
   const currentPath = routerState.location.pathname;
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
+  const activeItemId = (() => {
+    let bestMatch: string | null = null;
+    let longestPathLength = -1;
+
+    for (const group of menuGroups) {
+      for (const item of group.items) {
+        if (currentPath === item.path || currentPath.startsWith(item.path + "/")) {
+          if (item.path.length > longestPathLength) {
+            longestPathLength = item.path.length;
+            bestMatch = item.id;
+          }
+        }
+      }
+    }
+    return bestMatch;
+  })();
+
   return (
     <aside className={`modern-sidebar ${isCollapsed ? "collapsed" : ""}`}>
       {/* Sidebar Header */}
@@ -129,13 +146,14 @@ export function ModernSidebar({ isCollapsed, onToggle }: ModernSidebarProps) {
             {isCollapsed && <div className="modern-sidebar-group-divider" />}
             <ul>
               {group.items.map((item) => {
-                const isActive = currentPath === item.path;
+                const isActive = activeItemId === item.id;
                 const isHovered = hoveredItem === item.id;
 
                 return (
                   <li key={item.id}>
                     <Link
                       to={item.path}
+                      activeProps={{}} 
                       className={`modern-nav-item ${isActive ? "active" : ""}`}
                       onMouseEnter={() => setHoveredItem(item.id)}
                       onMouseLeave={() => setHoveredItem(null)}
