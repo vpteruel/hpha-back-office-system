@@ -6,6 +6,8 @@ import {
 } from "@tanstack/react-router";
 import { DashboardContent } from "./components/DashboardContent";
 import { ModernAdminLayout } from "./components/ModernAdminLayout";
+import { AutomationList } from "./pages/automations/AutomationList";
+import { ClosedPositionsList } from "./pages/automations/closed-positions/ClosedPositionsList";
 import { CateringDetail } from "./pages/forms/catering/CateringDetail";
 import { CateringForm } from "./pages/forms/catering/CateringForm";
 import { CateringList } from "./pages/forms/catering/CateringList";
@@ -38,6 +40,19 @@ const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
   component: DashboardContent,
+});
+
+// Automations
+const automationsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/automations",
+  component: AutomationList,
+});
+
+const closedPositionsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/automations/closed-positions",
+  component: ClosedPositionsList,
 });
 
 // Users
@@ -152,6 +167,8 @@ const settingsRoute = createRoute({
 // Create route tree
 const routeTree = rootRoute.addChildren([
   indexRoute,
+  automationsRoute,
+  closedPositionsRoute,
   usersRoute,
   cateringRoute,
   cateringNewRoute,
