@@ -1,5 +1,5 @@
 import type { Automation } from "@shared/index";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import type { Column } from "../../components/DataTable";
 import { DataTable } from "../../components/DataTable";
@@ -7,7 +7,6 @@ import "../pages.css";
 import "./Automations.css";
 
 export function AutomationList() {
-  const navigate = useNavigate();
   const [automations, setAutomations] = useState<Automation[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -67,7 +66,7 @@ export function AutomationList() {
             <div style={{ display: 'flex', gap: '0.5rem' }}>
               <Link
                 to="/automations/$id"
-                params={{ id: item.id }}
+                params={{ id: item.id.toString() }}
                 style={{
                     color: "var(--accent-color)",
                     textDecoration: "none",
@@ -75,18 +74,6 @@ export function AutomationList() {
                 }}
                 >
                 Details
-              </Link>
-              |
-              <Link
-                to="/automations/$id/runs"
-                params={{ id: item.id }}
-                style={{
-                    color: "var(--accent-color)",
-                    textDecoration: "none",
-                    fontWeight: 500,
-                }}
-                >
-                Run Now
               </Link>
             </div>
         )
