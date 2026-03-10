@@ -11,7 +11,7 @@ export function SettingsPage() {
         <h1>Settings</h1>
         <p>Configure system settings</p>
       </div>
-      <div className="list-container">
+      <div>
         <div className="settings-section">
           <h2>Appearance</h2>
           <p className="settings-description">

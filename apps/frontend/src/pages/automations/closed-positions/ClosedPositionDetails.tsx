@@ -55,11 +55,11 @@ export function ClosedPositionDetails() {
           </div>
           <div className="stat-card">
             <span className="stat-label">Posted Date</span>
-            <span className="stat-value">{position.postedDate ? new Date(position.postedDate).toLocaleDateString() : "N/A"}</span>
+            <span className="stat-value">{position.postedDate ? new Date(position.postedDate).toDateString() : "N/A"}</span>
           </div>
           <div className="stat-card">
             <span className="stat-label">Closed Date</span>
-            <span className="stat-value">{position.closedDate ? new Date(position.closedDate).toLocaleDateString() : "N/A"}</span>
+            <span className="stat-value">{position.closedDate ? new Date(position.closedDate).toDateString() : "N/A"}</span>
           </div>
         </div>
 
