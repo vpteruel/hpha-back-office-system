@@ -60,3 +60,81 @@
   font-weight: 500;
   font-size: 0.95rem;
 }
+
+/* Material Design Tone Colors */
+
+.color-swatch-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.color-swatch-wrapper:hover .color-swatch-btn {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+.color-swatch-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.color-swatch-wrapper:hover .color-swatch-label {
+  color: var(--text-primary);
+}
+
+.color-swatch-label.active {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.color-swatch-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+  position: relative;
+}
+
+.color-swatch-btn.active {
+  transform: scale(1.1);
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--text-primary);
+}
+
+.swatch-indigo {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+}
+
+.swatch-rose {
+  background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%);
+}
+
+.swatch-teal {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+}
+
+.swatch-amber {
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+}
+
+.swatch-emerald {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+}
+
+.swatch-violet {
+  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+}
+
+.swatch-sky {
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+}

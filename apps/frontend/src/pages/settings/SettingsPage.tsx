@@ -3,7 +3,7 @@ import "../pages.css";
 import "./SettingsPage.css";
 
 export function SettingsPage() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, colorTheme, setColorTheme } = useTheme();
 
   return (
     <div className="list-page">
@@ -40,6 +40,40 @@ export function SettingsPage() {
               <span className="theme-icon">💻</span>
               <span className="theme-label">System</span>
             </button>
+          </div>
+        </div>
+
+        <div className="settings-section">
+          <h2>Color Theme</h2>
+          <p className="settings-description">
+            Choose a Material Design 3 accent color palette.
+          </p>
+
+          <div className="theme-selector" style={{ gap: '1.5rem', padding: '0.5rem 0', flexWrap: 'wrap' }}>
+            {[
+              { id: 'indigo', label: 'Indigo' },
+              { id: 'rose', label: 'Rose' },
+              { id: 'teal', label: 'Teal' },
+              { id: 'amber', label: 'Amber' },
+              { id: 'emerald', label: 'Emerald' },
+              { id: 'violet', label: 'Violet' },
+              { id: 'sky', label: 'Sky' },
+            ].map((t) => (
+              <div
+                key={t.id}
+                className="color-swatch-wrapper"
+                onClick={() => setColorTheme(t.id as any)}
+              >
+                <button
+                  className={`color-swatch-btn swatch-${t.id} ${colorTheme === t.id ? "active" : ""}`}
+                  title={t.label}
+                  aria-label={`Select ${t.label} theme`}
+                />
+                <span className={`color-swatch-label ${colorTheme === t.id ? "active" : ""}`}>
+                  {t.label}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
