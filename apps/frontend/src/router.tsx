@@ -1,11 +1,12 @@
 import {
-  createRootRoute,
-  createRoute,
-  createRouter,
-  Outlet,
+    createRootRoute,
+    createRoute,
+    createRouter,
+    Outlet,
 } from "@tanstack/react-router";
 import { DashboardContent } from "./components/DashboardContent";
 import { ModernAdminLayout } from "./components/ModernAdminLayout";
+import { LoginPage } from "./pages/auth/LoginPage";
 import { AutomationDetail } from "./pages/automations/AutomationDetail";
 import { AutomationList } from "./pages/automations/AutomationList";
 import { ClosedPositionDetails } from "./pages/automations/closed-positions/ClosedPositionDetails";
@@ -28,8 +29,15 @@ import { TravelExpenseList } from "./pages/forms/travel-expense/TravelExpenseLis
 import { SettingsPage } from "./pages/settings/SettingsPage";
 import { UsersPage } from "./pages/users/UsersPage";
 
-// Root route with AdminLayout
+// Root route (contains no UI wrapper)
 const rootRoute = createRootRoute({
+  component: () => <Outlet />,
+});
+
+// Admin layout wrapper
+const adminRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  id: "admin",
   component: () => (
     <ModernAdminLayout>
       <Outlet />
@@ -37,149 +45,156 @@ const rootRoute = createRootRoute({
   ),
 });
 
+// Login
+const loginRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/login",
+  component: LoginPage,
+});
+
 // Dashboard
 const indexRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/",
   component: DashboardContent,
 });
 
 // Automations
 const automationsRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/automations",
   component: AutomationList,
 });
 
 const automationDetailRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/automations/$id",
   component: AutomationDetail,
 });
 
 const closedPositionsRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/automations/closed-positions",
   component: ClosedPositionsList,
 });
 
 const closedPositionDetailRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/automations/closed-positions/$id",
   component: ClosedPositionDetails,
 });
 
 // Users
 const usersRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/users",
   component: UsersPage,
 });
 
 // Catering routes
 const cateringRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/catering",
   component: CateringList,
 });
 
 const cateringNewRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/catering/new",
   component: CateringForm,
 });
 
 const cateringDetailRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/catering/$id",
   component: CateringDetail,
 });
 
 // Surveillance routes
 const surveillanceRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/surveillance",
   component: SurveillanceList,
 });
 
 const surveillanceNewRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/surveillance/new",
   component: SurveillanceForm,
 });
 
 const surveillanceDetailRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/surveillance/$id",
   component: SurveillanceDetail,
 });
 
 // Purchase routes
 const purchaseRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/purchase",
   component: PurchaseList,
 });
 
 const purchaseNewRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/purchase/new",
   component: PurchaseForm,
 });
 
 const purchaseDetailRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/purchase/$id",
   component: PurchaseDetail,
 });
 
 // Personal Expense routes
 const personalExpenseRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/personal-expense",
   component: PersonalExpenseList,
 });
 
 const personalExpenseNewRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/personal-expense/new",
   component: PersonalExpenseForm,
 });
 
 const personalExpenseDetailRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/personal-expense/$id",
   component: PersonalExpenseDetail,
 });
 
 // Travel Expense routes
 const travelExpenseRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/travel-expense",
   component: TravelExpenseList,
 });
 
 const travelExpenseNewRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/travel-expense/new",
   component: TravelExpenseForm,
 });
 
 const travelExpenseDetailRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/forms/travel-expense/$id",
   component: TravelExpenseDetail,
 });
 
 // Settings
 const settingsRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => adminRoute,
   path: "/settings",
   component: SettingsPage,
 });
 
 // Create route tree
-const routeTree = rootRoute.addChildren([
+const adminRouteTree = adminRoute.addChildren([
   indexRoute,
   automationsRoute,
   automationDetailRoute,
@@ -202,6 +217,11 @@ const routeTree = rootRoute.addChildren([
   travelExpenseNewRoute,
   travelExpenseDetailRoute,
   settingsRoute,
+]);
+
+const routeTree = rootRoute.addChildren([
+  loginRoute,
+  adminRouteTree
 ]);
 
 // Create and export router
