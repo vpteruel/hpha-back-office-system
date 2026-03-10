@@ -51,6 +51,7 @@ export function SettingsPage() {
 
           <div className="theme-selector" style={{ gap: '1.5rem', padding: '0.5rem 0', flexWrap: 'wrap' }}>
             {[
+              { id: 'slate', label: 'Slate' },
               { id: 'indigo', label: 'Indigo' },
               { id: 'rose', label: 'Rose' },
               { id: 'teal', label: 'Teal' },
