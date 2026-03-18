@@ -4,7 +4,7 @@
     "PKief.material-icon-theme",
     "dsznajder.es7-react-js-snippets",
     "dbaeumer.vscode-eslint",
-    "prettier.prettier-vscode",
+    "esbenp.prettier-vscode",
     "bradlc.vscode-tailwindcss",
     "redhat.vscode-yaml"
   ]
