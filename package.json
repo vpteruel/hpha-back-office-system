@@ -4,5 +4,11 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "dev": "concurrently -c \"cyan,magenta\" -n \"backend,frontend\" \"bun --cwd apps/backend run dev\" \"bun --cwd apps/frontend dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
 }
