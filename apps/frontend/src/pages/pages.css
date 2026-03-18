@@ -7,8 +7,14 @@
 }
 
 @keyframes pageFadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Extracted generic Header */
@@ -45,7 +51,7 @@
   padding: 2.5rem;
   border-radius: 1.25rem;
   box-shadow: var(--shadow-md);
-  min-height: 78vh;
+  min-height: 70vh;
   border: 1px solid var(--glass-border);
 }
 
@@ -71,23 +77,33 @@
   border-radius: 50%;
 }
 
-.status-active, .status-success {
+.status-active,
+.status-success {
   background-color: var(--success-bg);
   color: var(--success-text);
 }
-.status-active::before, .status-success::before { background-color: var(--success-text); }
+.status-active::before,
+.status-success::before {
+  background-color: var(--success-text);
+}
 
-.status-inactive, .status-failed {
+.status-inactive,
+.status-failed {
   background-color: var(--error-bg);
   color: var(--error-text);
 }
-.status-inactive::before, .status-failed::before { background-color: var(--error-text); }
+.status-inactive::before,
+.status-failed::before {
+  background-color: var(--error-text);
+}
 
 .status-partial {
   background-color: var(--warning-bg);
   color: var(--warning-text);
 }
-.status-partial::before { background-color: var(--warning-text); }
+.status-partial::before {
+  background-color: var(--warning-text);
+}
 
 /* --- Dashboard View Layout --- */
 .dashboard-layout {
@@ -115,7 +131,9 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  transition: transform 0.25s, box-shadow 0.25s;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
 }
 
 .stat-card:hover {
@@ -194,67 +212,69 @@
 
 /* Utility Classes */
 .timestamp {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .btn-secondary {
-    background-color: var(--bg-tertiary);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-    padding: 0.6rem 1.25rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 500;
-    box-shadow: var(--shadow-sm);
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.6rem 1.25rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
-    background-color: var(--hover-bg);
-    border-color: var(--accent-color);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+  background-color: var(--hover-bg);
+  border-color: var(--accent-color);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-secondary:active {
-    transform: translateY(1px);
+  transform: translateY(1px);
 }
 
 .error-message {
-    color: var(--error-text);
-    background-color: var(--error-bg);
-    padding: 1.25rem;
-    border-radius: 0.75rem;
-    margin-bottom: 1.5rem;
-    border-left: 4px solid var(--error-text);
-    font-weight: 500;
+  color: var(--error-text);
+  background-color: var(--error-bg);
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--error-text);
+  font-weight: 500;
 }
 
 .loading {
-    color: var(--text-secondary);
-    text-align: center;
-    padding: 4rem 2rem;
-    font-size: 1.1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 4rem 2rem;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .loading::after {
-    content: "";
-    width: 24px;
-    height: 24px;
-    border: 3px solid var(--border-color);
-    border-top-color: var(--accent-color);
-    border-radius: 50%;
-    animation: loading-spin 1s linear infinite;
+  content: "";
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--accent-color);
+  border-radius: 50%;
+  animation: loading-spin 1s linear infinite;
 }
 
 @keyframes loading-spin {
-    to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 768px) {
