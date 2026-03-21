@@ -1,7 +1,7 @@
 export function DashboardContent() {
   return (
     <div>
-      <div className="mb-10 flex justify-between items-end">
+      <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-end">
         <div>
           <h2 className="font-manrope text-3xl font-extrabold text-on-surface tracking-tight mb-2">
             Submission Analytics
@@ -10,8 +10,8 @@ export function DashboardContent() {
             Overview of form performance and administrative queue.
           </p>
         </div>
-        <div className="flex gap-2">
-          <button className="bg-surface-container-high px-4 py-2 rounded-xl text-sm font-semibold text-on-surface-variant flex items-center gap-2 hover:bg-surface-container-highest transition-colors">
+        <div className="flex flex-wrap gap-2">
+          <button className="bg-surface-container-high px-4 py-2 rounded-xl text-sm font-semibold text-on-surface-variant flex items-center gap-2 hover:bg-surface-variant transition-colors">
             <span className="material-symbols-outlined text-sm">
               calendar_today
             </span>
@@ -96,10 +96,10 @@ export function DashboardContent() {
         </div>
       </div>
 
-      <div className="grid grid-cols-12 gap-8">
+      <div className="grid grid-cols-12 gap-6 xl:gap-8">
         <div className="col-span-12 xl:col-span-8">
           <div className="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
-            <div className="px-6 py-5 flex justify-between items-center bg-surface-container-low">
+            <div className="px-4 sm:px-6 py-5 flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center bg-surface-container-low">
               <h4 className="font-manrope text-lg font-bold text-on-surface">
                 Recent Activity
               </h4>

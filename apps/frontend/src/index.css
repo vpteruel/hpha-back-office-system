@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@source "../src/**/*.{ts,tsx}";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   /* Surface colors */
@@ -10,6 +10,7 @@
   --color-surface-container-low: #f1f4f6;
   --color-surface-container-lowest: #ffffff;
   --color-surface-container-highest: #dbe4e7;
+  --color-surface-variant: #dbe4e7;
   --color-surface-dim: #d1dce0;
   --color-surface-bright: #f8f9fa;
 
@@ -63,6 +64,8 @@
   --font-headline: "Manrope", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-label: "Inter", sans-serif;
+  --font-manrope: "Manrope", sans-serif;
+  --font-inter: "Inter", sans-serif;
 }
 
 /* Base styles */
@@ -70,8 +73,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
@@ -79,12 +80,13 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
-  background-color: #f8f9fa;
-  color: #2b3437;
+  font-family: var(--font-body), sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 #root {
@@ -97,8 +99,19 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-headline), sans-serif;
   line-height: 1.2;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.brand-font {
+  font-family: var(--font-headline), sans-serif;
 }
 
 a {
