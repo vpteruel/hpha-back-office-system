@@ -80,10 +80,9 @@ export function Sidebar({
             const active = isActive(item.id, item.path);
             const isSubmissions = item.id === "submissions";
 
-            const iconStyle =
-              active || isSubmissions
-                ? { fontVariationSettings: '"FILL" 1' }
-                : undefined;
+            const iconStyle = isSubmissions
+              ? { fontVariationSettings: '"FILL" 1' }
+              : undefined;
 
             return (
               <Link
@@ -97,7 +96,7 @@ export function Sidebar({
                 }
               >
                 <span
-                  className={`material-symbols-outlined ${active ? "text-blue-700 dark:text-blue-300" : "text-slate-500 dark:text-slate-400 opacity-70 group-hover:opacity-100"}`}
+                  className={`material-symbols-outlined ${active ? "text-blue-800 dark:text-blue-300" : "text-slate-600 dark:text-slate-400 opacity-70 group-hover:opacity-100"}`}
                   style={iconStyle}
                 >
                   {item.icon}

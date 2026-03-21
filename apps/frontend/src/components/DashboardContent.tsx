@@ -1,7 +1,7 @@
 export function DashboardContent() {
   return (
     <div>
-      <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-end">
+      <div className="mb-10 flex justify-between items-end">
         <div>
           <h2 className="font-manrope text-3xl font-extrabold text-on-surface tracking-tight mb-2">
             Submission Analytics
@@ -10,7 +10,7 @@ export function DashboardContent() {
             Overview of form performance and administrative queue.
           </p>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex gap-2">
           <button className="bg-surface-container-high px-4 py-2 rounded-xl text-sm font-semibold text-on-surface-variant flex items-center gap-2 hover:bg-surface-variant transition-colors">
             <span className="material-symbols-outlined text-sm">
               calendar_today
@@ -26,8 +26,11 @@ export function DashboardContent() {
 
       <div className="grid grid-cols-12 gap-6 mb-8">
         <div className="col-span-12 lg:col-span-4 bg-surface-container-lowest rounded-xl p-6 flex flex-col justify-between relative overflow-hidden group">
-          <div className="absolute -top-3 -right-3 p-8 opacity-10 group-hover:scale-110 transition-transform duration-500 pointer-events-none">
-            <span className="material-symbols-outlined text-[9rem] leading-none text-primary/70">
+          <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform duration-500">
+            <span
+              className="material-symbols-outlined !text-8xl"
+              data-icon="bar_chart"
+            >
               bar_chart
             </span>
           </div>
@@ -96,10 +99,10 @@ export function DashboardContent() {
         </div>
       </div>
 
-      <div className="grid grid-cols-12 gap-6 xl:gap-8">
+      <div className="grid grid-cols-12 gap-8">
         <div className="col-span-12 xl:col-span-8">
           <div className="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
-            <div className="px-4 sm:px-6 py-5 flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center bg-surface-container-low">
+            <div className="px-6 py-5 flex justify-between items-center bg-surface-container-low">
               <h4 className="font-manrope text-lg font-bold text-on-surface">
                 Recent Activity
               </h4>
@@ -324,8 +327,11 @@ export function DashboardContent() {
                 </span>
               </div>
             </div>
-            <div className="absolute -bottom-5 -right-5 opacity-25 pointer-events-none">
-              <span className="material-symbols-outlined text-[9rem] leading-none text-blue-100/80">
+            <div className="absolute -bottom-4 -right-4 opacity-10">
+              <span
+                className="material-symbols-outlined !text-8xl"
+                data-icon="cloud_done"
+              >
                 cloud_done
               </span>
             </div>

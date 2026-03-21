@@ -12,7 +12,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
     <div className="flex min-h-screen bg-surface dark:bg-slate-950 text-slate-900 dark:text-slate-50">
       <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex-1 min-h-screen flex flex-col lg:ml-64">
-        <header className="fixed top-0 right-0 left-0 lg:left-64 z-40 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/70 dark:border-slate-800/70 flex justify-between items-center px-4 sm:px-8 h-16">
+        <header className="fixed top-0 right-0 left-0 lg:left-auto lg:w-[calc(100%-16rem)] z-40 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl flex justify-between items-center px-4 sm:px-8 h-16">
           <div className="flex items-center gap-3 sm:gap-4 flex-1 max-w-xl">
             <button
               className="lg:hidden p-2 text-slate-500 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-colors"
@@ -32,10 +32,10 @@ export function AdminLayout({ children }: AdminLayoutProps) {
               />
             </div>
           </div>
-          <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex items-center gap-4">
             <button className="hidden sm:block p-2 text-slate-500 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-colors relative">
               <span className="material-symbols-outlined">notifications</span>
-              <span className="absolute top-2 right-2 w-2 h-2 bg-blue-600 rounded-full border-2 border-slate-50 dark:border-slate-950"></span>
+              <span className="absolute top-2 right-2 w-2 h-2 bg-blue-600 rounded-full border-2 border-slate-50"></span>
             </button>
             <button className="hidden sm:block p-2 text-slate-500 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-colors">
               <span className="material-symbols-outlined">help_outline</span>

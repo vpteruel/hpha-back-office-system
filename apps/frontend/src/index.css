@@ -103,13 +103,6 @@ h6 {
   line-height: 1.2;
 }
 
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
 .brand-font {
   font-family: var(--font-headline), sans-serif;
 }
