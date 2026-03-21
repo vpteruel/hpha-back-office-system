@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 :root {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -371,3 +373,82 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Forms Anywhere Design System */
+.editorial-gradient {
+  background: linear-gradient(135deg, #005db5 0%, #0052a0 100%);
+}
+
+.font-manrope {
+  font-family: 'Manrope', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Surface colors from the design system */
+.bg-surface { background-color: #f8f9fa; }
+.bg-surface-container { background-color: #eaeff1; }
+.bg-surface-container-high { background-color: #e3e9ec; }
+.bg-surface-container-low { background-color: #f1f4f6; }
+.bg-surface-container-lowest { background-color: #ffffff; }
+.bg-surface-container-highest { background-color: #dbe4e7; }
+.bg-surface-variant { background-color: #dbe4e7; }
+.bg-surface-dim { background-color: #d1dce0; }
+.bg-surface-bright { background-color: #f8f9fa; }
+
+.text-on-surface { color: #2b3437; }
+.text-on-surface-variant { color: #586064; }
+.text-outline { color: #737c7f; }
+.text-outline-variant { color: #abb3b7; }
+
+.bg-primary { background-color: #005db5; }
+.bg-primary-container { background-color: #d6e3ff; }
+.bg-primary-dim { background-color: #0052a0; }
+.text-primary { color: #005db5; }
+.text-on-primary { color: #f6f7ff; }
+.text-on-primary-container { color: #00519e; }
+
+.bg-secondary { background-color: #4d5f84; }
+.bg-secondary-container { background-color: #d8e2ff; }
+.bg-secondary-dim { background-color: #415378; }
+.text-secondary { color: #4d5f84; }
+.text-on-secondary { color: #f9f8ff; }
+.text-on-secondary-container { color: #405276; }
+
+.bg-tertiary { background-color: #5d5c78; }
+.bg-tertiary-container { background-color: #d9d7f8; }
+.bg-tertiary-dim { background-color: #51516c; }
+.text-tertiary { color: #5d5c78; }
+.text-on-tertiary { color: #fbf7ff; }
+.text-on-tertiary-container { color: #4a4a65; }
+
+.bg-error { background-color: #9f403d; }
+.bg-error-container { background-color: #fe8983; }
+.bg-error-dim { background-color: #4e0309; }
+.text-error { color: #9f403d; }
+.text-on-error { color: #fff7f6; }
+.text-on-error-container { color: #752121; }
+
+.border-surface-container { border-color: #eaeff1; }
+.border-outline { border-color: #737c7f; }
+.border-outline-variant { border-color: #abb3b7; }
