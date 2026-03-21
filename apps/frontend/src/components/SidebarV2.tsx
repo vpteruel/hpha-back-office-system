@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
-import "./ModernSidebar.css";
+import "./SidebarV2.css";
 
 interface MenuItem {
   id: string;
@@ -20,9 +20,7 @@ const menuGroups: MenuGroup[] = [
   {
     id: "main",
     title: "Main",
-    items: [
-      { id: "dashboard", label: "Dashboard", icon: "📊", path: "/" },
-    ],
+    items: [{ id: "dashboard", label: "Dashboard", icon: "📊", path: "/" }],
   },
   {
     id: "forms",
@@ -96,7 +94,7 @@ interface ModernSidebarProps {
   onToggle: () => void;
 }
 
-export function ModernSidebar({ isCollapsed, onToggle }: ModernSidebarProps) {
+export function SidebarV2({ isCollapsed, onToggle }: ModernSidebarProps) {
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
@@ -107,7 +105,10 @@ export function ModernSidebar({ isCollapsed, onToggle }: ModernSidebarProps) {
 
     for (const group of menuGroups) {
       for (const item of group.items) {
-        if (currentPath === item.path || currentPath.startsWith(item.path + "/")) {
+        if (
+          currentPath === item.path ||
+          currentPath.startsWith(item.path + "/")
+        ) {
           if (item.path.length > longestPathLength) {
             longestPathLength = item.path.length;
             bestMatch = item.id;
@@ -153,7 +154,7 @@ export function ModernSidebar({ isCollapsed, onToggle }: ModernSidebarProps) {
                   <li key={item.id}>
                     <Link
                       to={item.path}
-                      activeProps={{}} 
+                      activeProps={{}}
                       className={`modern-nav-item ${isActive ? "active" : ""}`}
                       onMouseEnter={() => setHoveredItem(item.id)}
                       onMouseLeave={() => setHoveredItem(null)}
@@ -163,7 +164,9 @@ export function ModernSidebar({ isCollapsed, onToggle }: ModernSidebarProps) {
                         <>
                           <span className="modern-nav-label">{item.label}</span>
                           {item.badge && (
-                            <span className="modern-nav-badge">{item.badge}</span>
+                            <span className="modern-nav-badge">
+                              {item.badge}
+                            </span>
                           )}
                         </>
                       )}

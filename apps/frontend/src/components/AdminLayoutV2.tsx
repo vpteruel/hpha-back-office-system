@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { useState } from "react";
-import "./ModernAdminLayout.css";
-import { ModernSidebar } from "./ModernSidebar";
+import "./AdminLayoutV2.css";
+import { SidebarV2 } from "./SidebarV2";
 
 interface ModernAdminLayoutProps {
   children: ReactNode;
@@ -20,7 +20,7 @@ export function ModernAdminLayout({ children }: ModernAdminLayoutProps) {
         />
       )}
 
-      <ModernSidebar
+      <SidebarV2
         isCollapsed={isSidebarCollapsed}
         onToggle={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
       />

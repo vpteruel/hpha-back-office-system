@@ -48,7 +48,7 @@ interface SidebarProps {
   isCollapsed: boolean;
 }
 
-export function Sidebar({ isCollapsed }: SidebarProps) {
+export function SidebarV1({ isCollapsed }: SidebarProps) {
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
 

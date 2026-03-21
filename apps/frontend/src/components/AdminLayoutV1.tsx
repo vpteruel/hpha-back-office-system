@@ -1,18 +1,18 @@
 import type { ReactNode } from "react";
 import { useState } from "react";
 import "./AdminLayoutV1.css";
-import { Sidebar } from "./SidebarV1";
+import { SidebarV1 } from "./SidebarV1";
 
 interface AdminLayoutProps {
   children: ReactNode;
 }
 
-export function AdminLayout({ children }: AdminLayoutProps) {
+export function AdminLayoutV1({ children }: AdminLayoutProps) {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   return (
     <div className="admin-layout">
-      <Sidebar isCollapsed={isSidebarCollapsed} />
+      <SidebarV1 isCollapsed={isSidebarCollapsed} />
       <div className={`main-content ${isSidebarCollapsed ? "expanded" : ""}`}>
         <header className="header">
           <div className="header-content">
