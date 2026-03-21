@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import "./Sidebar.css";
+import "./SidebarV1.css";
 
 interface MenuItem {
   id: string;

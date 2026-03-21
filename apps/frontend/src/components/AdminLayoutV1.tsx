@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { useState } from "react";
-import "./AdminLayout.css";
-import { Sidebar } from "./Sidebar";
+import "./AdminLayoutV1.css";
+import { Sidebar } from "./SidebarV1";
 
 interface AdminLayoutProps {
   children: ReactNode;
