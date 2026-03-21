@@ -1,0 +1,682 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Forms Anywhere | Form Selection</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              surface: "#f8f9fa",
+              "surface-container": "#eaeff1",
+              "surface-container-high": "#e3e9ec",
+              "tertiary-dim": "#51516c",
+              "on-primary-fixed-variant": "#005bb0",
+              primary: "#005db5",
+              "primary-container": "#d6e3ff",
+              "primary-dim": "#0052a0",
+              "error-container": "#fe8983",
+              "on-surface": "#2b3437",
+              "on-secondary-container": "#405276",
+              "on-error": "#fff7f6",
+              "surface-variant": "#dbe4e7",
+              "outline-variant": "#abb3b7",
+              "inverse-primary": "#5f9efb",
+              "on-secondary-fixed": "#2d3f62",
+              "on-background": "#2b3437",
+              "on-secondary-fixed-variant": "#495b81",
+              outline: "#737c7f",
+              "on-tertiary-fixed": "#383751",
+              "on-primary-fixed": "#003f7d",
+              "on-error-container": "#752121",
+              "error-dim": "#4e0309",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#4a4a65",
+              "inverse-on-surface": "#9b9d9e",
+              "surface-container-low": "#f1f4f6",
+              "surface-tint": "#005db5",
+              "secondary-dim": "#415378",
+              secondary: "#4d5f84",
+              "inverse-surface": "#0c0f10",
+              tertiary: "#5d5c78",
+              "tertiary-fixed": "#d9d7f8",
+              "tertiary-fixed-dim": "#cbc9e9",
+              "secondary-container": "#d8e2ff",
+              "on-tertiary-fixed-variant": "#54546f",
+              "primary-fixed": "#d6e3ff",
+              "primary-fixed-dim": "#bfd5ff",
+              "on-secondary": "#f9f8ff",
+              "tertiary-container": "#d9d7f8",
+              "on-tertiary": "#fbf7ff",
+              "surface-dim": "#d1dce0",
+              "surface-bright": "#f8f9fa",
+              "surface-container-highest": "#dbe4e7",
+              "secondary-fixed": "#d8e2ff",
+              "on-surface-variant": "#586064",
+              "on-primary": "#f6f7ff",
+              "secondary-fixed-dim": "#c2d4ff",
+              error: "#9f403d",
+              "on-primary-container": "#00519e",
+              background: "#f8f9fa",
+            },
+            fontFamily: {
+              headline: ["Manrope"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8f9fa;
+        color: #2b3437;
+      }
+      h1,
+      h2,
+      h3,
+      .brand-font {
+        font-family: "Manrope", sans-serif;
+      }
+      .editorial-gradient {
+        background: linear-gradient(135deg, #005db5 0%, #0052a0 100%);
+      }
+    </style>
+  </head>
+  <body class="bg-surface">
+    <!-- SideNavBar Component -->
+    <aside
+      class="fixed left-0 top-0 h-full w-64 z-50 bg-slate-200 dark:bg-slate-900 font-inter text-[0.875rem] font-medium flex flex-col h-full py-6"
+    >
+      <div class="px-6 mb-8 flex items-center gap-3">
+        <div
+          class="w-10 h-10 rounded-xl editorial-gradient flex items-center justify-center text-white shadow-sm"
+        >
+          <span class="material-symbols-outlined" data-icon="description"
+            >description</span
+          >
+        </div>
+        <div>
+          <h1
+            class="font-manrope text-lg font-black tracking-tighter text-slate-900 dark:text-slate-50"
+          >
+            Forms Anywhere
+          </h1>
+          <p
+            class="text-[0.6875rem] text-slate-500 font-semibold tracking-wider uppercase"
+          >
+            Back-Office System
+          </p>
+        </div>
+      </div>
+      <nav class="flex-grow">
+        <!-- Forms (Active) -->
+        <a
+          class="border-l-[3px] border-blue-700 bg-slate-300/40 dark:bg-slate-800/40 text-blue-800 dark:text-blue-300 px-6 py-3 flex items-center gap-3"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined opacity-70 group-hover:opacity-100"
+            data-icon="description"
+            >description</span
+          >
+          Forms
+        </a>
+        <!-- Submissions (Inactive) - Dashboard View -->
+        <a
+          class="text-slate-600 dark:text-slate-400 px-6 py-3 flex items-center gap-3 hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-200 group"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined"
+            data-icon="list_alt"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >list_alt</span
+          >
+          Submissions
+        </a>
+        <!-- System Settings -->
+        <a
+          class="text-slate-600 dark:text-slate-400 px-6 py-3 flex items-center gap-3 hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-200 group"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined opacity-70 group-hover:opacity-100"
+            data-icon="settings"
+            >settings</span
+          >
+          System Settings
+        </a>
+      </nav>
+      <div class="mt-auto pt-6 border-t border-slate-300/30">
+        <a
+          class="text-slate-500 dark:text-slate-400 px-6 py-2.5 flex items-center gap-3 hover:text-blue-700 transition-colors text-sm"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-lg" data-icon="menu_book"
+            >menu_book</span
+          >
+          Documentation
+        </a>
+        <a
+          class="text-slate-500 dark:text-slate-400 px-6 py-2.5 flex items-center gap-3 hover:text-blue-700 transition-colors text-sm"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined text-lg"
+            data-icon="contact_support"
+            >contact_support</span
+          >
+          Support
+        </a>
+      </div>
+    </aside>
+    <!-- Main Content Wrapper -->
+    <main class="ml-64 min-h-screen">
+      <!-- TopNavBar Component -->
+      <header
+        class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl flex justify-between items-center px-8 h-16"
+      >
+        <div class="flex items-center gap-4 flex-1 max-w-xl">
+          <div class="relative w-full">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl"
+              >search</span
+            >
+            <input
+              class="w-full bg-slate-100 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400"
+              placeholder="Search entries..."
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <button
+            class="p-2 text-slate-500 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-colors relative"
+          >
+            <span class="material-symbols-outlined" data-icon="notifications"
+              >notifications</span
+            >
+            <span
+              class="absolute top-2 right-2 w-2 h-2 bg-blue-600 rounded-full border-2 border-slate-50"
+            ></span>
+          </button>
+          <button
+            class="p-2 text-slate-500 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-colors"
+          >
+            <span class="material-symbols-outlined" data-icon="help_outline"
+              >help_outline</span
+            >
+          </button>
+          <div class="h-6 w-[1px] bg-slate-200 mx-2"></div>
+          <div
+            class="flex items-center gap-3 cursor-pointer hover:bg-slate-200/50 p-1.5 pr-3 rounded-lg transition-colors"
+          >
+            <img
+              alt="Administrator Avatar"
+              class="w-8 h-8 rounded-lg"
+              data-alt="Administrator user profile picture"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtMBpvcAG2_dLHJJqmY-OlaHOGpUc7Bca7IvPEduAgwrfVEbtuGnW5PZx7KN1KPJE__zY2giMq0ykyS5msgxXDQfcuDAiVT8sP1ZqaP2JeVy1M4CWhHAh8tBGT6skmFxRObHIvZfRcDhMiQ5wvPT535D5zoXgjw-ZUb4Rr6bXAtQv3DuCYHt0vvDRr_Eu3lObDVOvG-5VSxfCul-KPwGrLFTvk2afIB2B4f0uJSzuZBEWcaMRyogkAi91X72MiO6IHmAN02lByftM"
+            />
+            <span
+              class="font-manrope text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-50"
+              >User Profile</span
+            >
+          </div>
+        </div>
+      </header>
+      <!-- Canvas Content -->
+      <div class="pt-24 px-8 pb-12">
+        <!-- Page Header Area -->
+        <div class="mb-10 flex justify-between items-end">
+          <div>
+            <h2
+              class="font-manrope text-3xl font-extrabold text-on-surface tracking-tight mb-2"
+            >
+              Form Selection
+            </h2>
+            <p class="text-on-surface-variant font-body">
+              Browse our library of internal precision forms. Use the categories
+              below or the search bar above to find the exact requisition or
+              review process required.
+            </p>
+          </div>
+          <div class="flex gap-2">
+            <button
+              class="bg-surface-container-high px-4 py-2 rounded-xl text-sm font-semibold text-on-surface-variant flex items-center gap-2 hover:bg-surface-variant transition-colors"
+            >
+              <span
+                class="material-symbols-outlined text-sm"
+                data-icon="filter_list"
+                >filter_list</span
+              >
+              All Categories
+            </button>
+            <button
+              class="editorial-gradient text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-md"
+            >
+              <span class="material-symbols-outlined text-sm" data-icon="add"
+                >add</span
+              >
+              New Form
+            </button>
+          </div>
+        </div>
+        <!-- Bento Filter Grid -->
+        <div class="grid grid-cols-12 gap-6 mb-12">
+          <!-- Large Feature Card -->
+          <div
+            class="col-span-8 bg-surface-container-lowest rounded-xl p-8 flex items-center justify-between group cursor-pointer hover:bg-primary-container transition-all duration-300"
+          >
+            <div class="flex-1">
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full bg-error-container/20 text-error font-semibold text-[0.625rem] tracking-wider uppercase mb-4"
+                >Critical Action</span
+              >
+              <h2 class="text-3xl font-headline font-bold text-on-surface mb-3">
+                Emergency OR Access Booking
+              </h2>
+              <p class="text-on-surface-variant font-body mb-6">
+                Process review for immediate operating room allocation and
+                critical resource management.
+              </p>
+              <button
+                class="inline-flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all"
+              >
+                Initialize Review
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
+            </div>
+            <div
+              class="w-48 h-48 bg-surface-container rounded-2xl flex items-center justify-center transform group-hover:rotate-3 transition-transform"
+            >
+              <span
+                class="material-symbols-outlined text-6xl text-primary opacity-40"
+                >medical_services</span
+              >
+            </div>
+          </div>
+          <!-- Secondary Highlight -->
+          <div
+            class="col-span-4 bg-surface-container rounded-xl p-8 flex flex-col justify-between"
+          >
+            <div>
+              <span
+                class="material-symbols-outlined text-primary-dim text-4xl mb-4"
+                >account_balance_wallet</span
+              >
+              <h3 class="text-xl font-headline font-bold text-on-surface mb-2">
+                Finance Hub
+              </h3>
+              <p class="text-sm text-on-surface-variant font-body">
+                Access all reimbursement and procurement requisition forms in
+                one consolidated view.
+              </p>
+            </div>
+            <div class="mt-8 flex -space-x-3">
+              <div
+                class="w-10 h-10 rounded-full bg-white border-2 border-surface-container flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-lg"
+                  >receipt_long</span
+                >
+              </div>
+              <div
+                class="w-10 h-10 rounded-full bg-white border-2 border-surface-container flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-lg"
+                  >shopping_cart</span
+                >
+              </div>
+              <div
+                class="w-10 h-10 rounded-full bg-white border-2 border-surface-container flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-lg"
+                  >restaurant</span
+                >
+              </div>
+              <div
+                class="w-10 h-10 rounded-full bg-primary text-white border-2 border-surface-container flex items-center justify-center text-xs font-bold"
+              >
+                +4
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Main Form Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Personal Expense Reimbursement -->
+          <div
+            class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(12,15,16,0.06)] group border border-transparent hover:border-primary/10"
+          >
+            <div class="flex justify-between items-start mb-6">
+              <div
+                class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container"
+              >
+                <span class="material-symbols-outlined">payments</span>
+              </div>
+              <span
+                class="text-[0.625rem] font-bold text-outline-variant uppercase tracking-widest"
+                >Finance</span
+              >
+            </div>
+            <h3 class="text-lg font-headline font-bold text-on-surface mb-2">
+              Personal Expense Reimbursement
+            </h3>
+            <p class="text-sm text-on-surface-variant font-body mb-6">
+              Standard claims for personal out-of-pocket expenses incurred
+              during operations.
+            </p>
+            <div
+              class="flex items-center justify-between pt-6 border-t border-surface-container-high"
+            >
+              <span
+                class="text-[0.6875rem] font-medium text-outline flex items-center gap-1"
+              >
+                <span class="material-symbols-outlined text-sm">schedule</span>
+                5 min est.
+              </span>
+              <button class="text-primary font-bold text-sm hover:underline">
+                Launch
+              </button>
+            </div>
+          </div>
+          <!-- Travel Expense Reimbursement -->
+          <div
+            class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(12,15,16,0.06)] group border border-transparent hover:border-primary/10"
+          >
+            <div class="flex justify-between items-start mb-6">
+              <div
+                class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center text-on-secondary-container"
+              >
+                <span class="material-symbols-outlined">flight_takeoff</span>
+              </div>
+              <span
+                class="text-[0.625rem] font-bold text-outline-variant uppercase tracking-widest"
+                >Travel</span
+              >
+            </div>
+            <h3 class="text-lg font-headline font-bold text-on-surface mb-2">
+              Travel Expense Reimbursement
+            </h3>
+            <p class="text-sm text-on-surface-variant font-body mb-6">
+              Reconcile travel receipts, mileage, and accommodation costs
+              post-trip.
+            </p>
+            <div
+              class="flex items-center justify-between pt-6 border-t border-surface-container-high"
+            >
+              <span
+                class="text-[0.6875rem] font-medium text-outline flex items-center gap-1"
+              >
+                <span class="material-symbols-outlined text-sm">schedule</span>
+                8 min est.
+              </span>
+              <button class="text-primary font-bold text-sm hover:underline">
+                Launch
+              </button>
+            </div>
+          </div>
+          <!-- Purchase Requisition -->
+          <div
+            class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(12,15,16,0.06)] group border border-transparent hover:border-primary/10"
+          >
+            <div class="flex justify-between items-start mb-6">
+              <div
+                class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container"
+              >
+                <span class="material-symbols-outlined">shopping_cart</span>
+              </div>
+              <span
+                class="text-[0.625rem] font-bold text-outline-variant uppercase tracking-widest"
+                >Procurement</span
+              >
+            </div>
+            <h3 class="text-lg font-headline font-bold text-on-surface mb-2">
+              Purchase Requisition
+            </h3>
+            <p class="text-sm text-on-surface-variant font-body mb-6">
+              Formal request to buy goods or services from verified external
+              vendors.
+            </p>
+            <div
+              class="flex items-center justify-between pt-6 border-t border-surface-container-high"
+            >
+              <span
+                class="text-[0.6875rem] font-medium text-outline flex items-center gap-1"
+              >
+                <span class="material-symbols-outlined text-sm"
+                  >verified_user</span
+                >
+                Multi-step
+              </span>
+              <button class="text-primary font-bold text-sm hover:underline">
+                Launch
+              </button>
+            </div>
+          </div>
+          <!-- Catering Requisition -->
+          <div
+            class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(12,15,16,0.06)] group border border-transparent hover:border-primary/10"
+          >
+            <div class="flex justify-between items-start mb-6">
+              <div
+                class="w-12 h-12 bg-tertiary-container rounded-lg flex items-center justify-center text-on-tertiary-container"
+              >
+                <span class="material-symbols-outlined">restaurant</span>
+              </div>
+              <span
+                class="text-[0.625rem] font-bold text-outline-variant uppercase tracking-widest"
+                >Events</span
+              >
+            </div>
+            <h3 class="text-lg font-headline font-bold text-on-surface mb-2">
+              Catering Requisition
+            </h3>
+            <p class="text-sm text-on-surface-variant font-body mb-6">
+              Order hospitality services for department meetings and
+              conferences.
+            </p>
+            <div
+              class="flex items-center justify-between pt-6 border-t border-surface-container-high"
+            >
+              <span
+                class="text-[0.6875rem] font-medium text-outline flex items-center gap-1"
+              >
+                <span class="material-symbols-outlined text-sm"
+                  >notification_important</span
+                >
+                48h notice
+              </span>
+              <button class="text-primary font-bold text-sm hover:underline">
+                Launch
+              </button>
+            </div>
+          </div>
+          <!-- Capital Equipment Request Form -->
+          <div
+            class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(12,15,16,0.06)] group border border-transparent hover:border-primary/10"
+          >
+            <div class="flex justify-between items-start mb-6">
+              <div
+                class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container"
+              >
+                <span class="material-symbols-outlined"
+                  >precision_manufacturing</span
+                >
+              </div>
+              <span
+                class="text-[0.625rem] font-bold text-outline-variant uppercase tracking-widest"
+                >Assets</span
+              >
+            </div>
+            <h3 class="text-lg font-headline font-bold text-on-surface mb-2">
+              Capital Equipment Request
+            </h3>
+            <p class="text-sm text-on-surface-variant font-body mb-6">
+              High-value asset procurement requests requiring executive
+              approval.
+            </p>
+            <div
+              class="flex items-center justify-between pt-6 border-t border-surface-container-high"
+            >
+              <span
+                class="text-[0.6875rem] font-medium text-outline flex items-center gap-1"
+              >
+                <span class="material-symbols-outlined text-sm">lock</span>
+                Executive Only
+              </span>
+              <button class="text-primary font-bold text-sm hover:underline">
+                Launch
+              </button>
+            </div>
+          </div>
+          <!-- Video Surveillance Request -->
+          <div
+            class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(12,15,16,0.06)] group border border-transparent hover:border-primary/10"
+          >
+            <div class="flex justify-between items-start mb-6">
+              <div
+                class="w-12 h-12 bg-error-container/20 rounded-lg flex items-center justify-center text-error"
+              >
+                <span class="material-symbols-outlined">videocam</span>
+              </div>
+              <span
+                class="text-[0.625rem] font-bold text-outline-variant uppercase tracking-widest"
+                >Security</span
+              >
+            </div>
+            <h3 class="text-lg font-headline font-bold text-on-surface mb-2">
+              Video Surveillance Request
+            </h3>
+            <p class="text-sm text-on-surface-variant font-body mb-6">
+              Request access to historical or live footage for compliance
+              investigations.
+            </p>
+            <div
+              class="flex items-center justify-between pt-6 border-t border-surface-container-high"
+            >
+              <span
+                class="text-[0.6875rem] font-medium text-outline flex items-center gap-1"
+              >
+                <span class="material-symbols-outlined text-sm">gavel</span>
+                Compliance Review
+              </span>
+              <button class="text-primary font-bold text-sm hover:underline">
+                Launch
+              </button>
+            </div>
+          </div>
+          <!-- Disposal/Transfer of Equipment -->
+          <div
+            class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(12,15,16,0.06)] group border border-transparent hover:border-primary/10"
+          >
+            <div class="flex justify-between items-start mb-6">
+              <div
+                class="w-12 h-12 bg-outline-variant/20 rounded-lg flex items-center justify-center text-on-surface-variant"
+              >
+                <span class="material-symbols-outlined">recycling</span>
+              </div>
+              <span
+                class="text-[0.625rem] font-bold text-outline-variant uppercase tracking-widest"
+                >Logistics</span
+              >
+            </div>
+            <h3 class="text-lg font-headline font-bold text-on-surface mb-2">
+              Disposal/Transfer of Equipment
+            </h3>
+            <p class="text-sm text-on-surface-variant font-body mb-6">
+              Log the decommissioning or inter-departmental transfer of physical
+              assets.
+            </p>
+            <div
+              class="flex items-center justify-between pt-6 border-t border-surface-container-high"
+            >
+              <span
+                class="text-[0.6875rem] font-medium text-outline flex items-center gap-1"
+              >
+                <span class="material-symbols-outlined text-sm"
+                  >inventory_2</span
+                >
+                Lifecycle
+              </span>
+              <button class="text-primary font-bold text-sm hover:underline">
+                Launch
+              </button>
+            </div>
+          </div>
+          <!-- Custom/Other Form -->
+          <div
+            class="bg-surface-container border-2 border-dashed border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center text-center group cursor-pointer hover:bg-surface-container-high transition-colors"
+          >
+            <div
+              class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-outline-variant mb-4 group-hover:scale-110 transition-transform"
+            >
+              <span class="material-symbols-outlined">add</span>
+            </div>
+            <h3 class="text-lg font-headline font-bold text-on-surface mb-1">
+              Missing a form?
+            </h3>
+            <p class="text-xs text-on-surface-variant font-body">
+              Request a new custom workflow.
+            </p>
+          </div>
+        </div>
+        <!-- Bottom Advisory -->
+        <div
+          class="mt-16 bg-surface-container-high rounded-xl p-6 flex items-start gap-4"
+        >
+          <span
+            class="material-symbols-outlined text-primary-dim"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >info</span
+          >
+          <div>
+            <h4 class="text-sm font-bold text-on-surface">
+              Precision Submission Standards
+            </h4>
+            <p class="text-xs text-on-surface-variant mt-1 leading-relaxed">
+              All submissions are digitally signed and timestamped. Ensure all
+              required documentation is uploaded in PDF/A format to meet
+              institutional compliance guidelines. For urgent surgical requests,
+              please utilize the prioritized Emergency OR link at the top of the
+              dashboard.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

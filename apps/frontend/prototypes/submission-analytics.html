@@ -1,0 +1,703 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Forms Anywhere | Submission Analytics</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              surface: "#f8f9fa",
+              "surface-container": "#eaeff1",
+              "surface-container-high": "#e3e9ec",
+              "tertiary-dim": "#51516c",
+              "on-primary-fixed-variant": "#005bb0",
+              primary: "#005db5",
+              "primary-container": "#d6e3ff",
+              "primary-dim": "#0052a0",
+              "error-container": "#fe8983",
+              "on-surface": "#2b3437",
+              "on-secondary-container": "#405276",
+              "on-error": "#fff7f6",
+              "surface-variant": "#dbe4e7",
+              "outline-variant": "#abb3b7",
+              "inverse-primary": "#5f9efb",
+              "on-secondary-fixed": "#2d3f62",
+              "on-background": "#2b3437",
+              "on-secondary-fixed-variant": "#495b81",
+              outline: "#737c7f",
+              "on-tertiary-fixed": "#383751",
+              "on-primary-fixed": "#003f7d",
+              "on-error-container": "#752121",
+              "error-dim": "#4e0309",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#4a4a65",
+              "inverse-on-surface": "#9b9d9e",
+              "surface-container-low": "#f1f4f6",
+              "surface-tint": "#005db5",
+              "secondary-dim": "#415378",
+              secondary: "#4d5f84",
+              "inverse-surface": "#0c0f10",
+              tertiary: "#5d5c78",
+              "tertiary-fixed": "#d9d7f8",
+              "tertiary-fixed-dim": "#cbc9e9",
+              "secondary-container": "#d8e2ff",
+              "on-tertiary-fixed-variant": "#54546f",
+              "primary-fixed": "#d6e3ff",
+              "primary-fixed-dim": "#bfd5ff",
+              "on-secondary": "#f9f8ff",
+              "tertiary-container": "#d9d7f8",
+              "on-tertiary": "#fbf7ff",
+              "surface-dim": "#d1dce0",
+              "surface-bright": "#f8f9fa",
+              "surface-container-highest": "#dbe4e7",
+              "secondary-fixed": "#d8e2ff",
+              "on-surface-variant": "#586064",
+              "on-primary": "#f6f7ff",
+              "secondary-fixed-dim": "#c2d4ff",
+              error: "#9f403d",
+              "on-primary-container": "#00519e",
+              background: "#f8f9fa",
+            },
+            fontFamily: {
+              headline: ["Manrope"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8f9fa;
+        color: #2b3437;
+      }
+      h1,
+      h2,
+      h3,
+      .brand-font {
+        font-family: "Manrope", sans-serif;
+      }
+      .editorial-gradient {
+        background: linear-gradient(135deg, #005db5 0%, #0052a0 100%);
+      }
+    </style>
+  </head>
+  <body class="bg-surface">
+    <!-- SideNavBar Component -->
+    <aside
+      class="fixed left-0 top-0 h-full w-64 z-50 bg-slate-200 dark:bg-slate-900 font-inter text-[0.875rem] font-medium flex flex-col h-full py-6"
+    >
+      <div class="px-6 mb-8 flex items-center gap-3">
+        <div
+          class="w-10 h-10 rounded-xl editorial-gradient flex items-center justify-center text-white shadow-sm"
+        >
+          <span class="material-symbols-outlined" data-icon="description"
+            >description</span
+          >
+        </div>
+        <div>
+          <h1
+            class="font-manrope text-lg font-black tracking-tighter text-slate-900 dark:text-slate-50"
+          >
+            Forms Anywhere
+          </h1>
+          <p
+            class="text-[0.6875rem] text-slate-500 font-semibold tracking-wider uppercase"
+          >
+            Back-Office System
+          </p>
+        </div>
+      </div>
+      <nav class="flex-grow">
+        <!-- Forms (Inactive) -->
+        <a
+          class="text-slate-600 dark:text-slate-400 px-6 py-3 flex items-center gap-3 hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-200 group"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined opacity-70 group-hover:opacity-100"
+            data-icon="description"
+            >description</span
+          >
+          Forms
+        </a>
+        <!-- Submissions (Active) - Dashboard View -->
+        <a
+          class="border-l-[3px] border-blue-700 bg-slate-300/40 dark:bg-slate-800/40 text-blue-800 dark:text-blue-300 px-6 py-3 flex items-center gap-3"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined"
+            data-icon="list_alt"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >list_alt</span
+          >
+          Submissions
+        </a>
+        <!-- System Settings -->
+        <a
+          class="text-slate-600 dark:text-slate-400 px-6 py-3 flex items-center gap-3 hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-200 group"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined opacity-70 group-hover:opacity-100"
+            data-icon="settings"
+            >settings</span
+          >
+          System Settings
+        </a>
+      </nav>
+      <div class="mt-auto pt-6 border-t border-slate-300/30">
+        <a
+          class="text-slate-500 dark:text-slate-400 px-6 py-2.5 flex items-center gap-3 hover:text-blue-700 transition-colors text-sm"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-lg" data-icon="menu_book"
+            >menu_book</span
+          >
+          Documentation
+        </a>
+        <a
+          class="text-slate-500 dark:text-slate-400 px-6 py-2.5 flex items-center gap-3 hover:text-blue-700 transition-colors text-sm"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined text-lg"
+            data-icon="contact_support"
+            >contact_support</span
+          >
+          Support
+        </a>
+      </div>
+    </aside>
+    <!-- Main Content Wrapper -->
+    <main class="ml-64 min-h-screen">
+      <!-- TopNavBar Component -->
+      <header
+        class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl flex justify-between items-center px-8 h-16"
+      >
+        <div class="flex items-center gap-4 flex-1 max-w-xl">
+          <div class="relative w-full">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl"
+              >search</span
+            >
+            <input
+              class="w-full bg-slate-100 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400"
+              placeholder="Search entries..."
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <button
+            class="p-2 text-slate-500 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-colors relative"
+          >
+            <span class="material-symbols-outlined" data-icon="notifications"
+              >notifications</span
+            >
+            <span
+              class="absolute top-2 right-2 w-2 h-2 bg-blue-600 rounded-full border-2 border-slate-50"
+            ></span>
+          </button>
+          <button
+            class="p-2 text-slate-500 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-colors"
+          >
+            <span class="material-symbols-outlined" data-icon="help_outline"
+              >help_outline</span
+            >
+          </button>
+          <div class="h-6 w-[1px] bg-slate-200 mx-2"></div>
+          <div
+            class="flex items-center gap-3 cursor-pointer hover:bg-slate-200/50 p-1.5 pr-3 rounded-lg transition-colors"
+          >
+            <img
+              alt="Administrator Avatar"
+              class="w-8 h-8 rounded-lg"
+              data-alt="Administrator user profile picture"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtMBpvcAG2_dLHJJqmY-OlaHOGpUc7Bca7IvPEduAgwrfVEbtuGnW5PZx7KN1KPJE__zY2giMq0ykyS5msgxXDQfcuDAiVT8sP1ZqaP2JeVy1M4CWhHAh8tBGT6skmFxRObHIvZfRcDhMiQ5wvPT535D5zoXgjw-ZUb4Rr6bXAtQv3DuCYHt0vvDRr_Eu3lObDVOvG-5VSxfCul-KPwGrLFTvk2afIB2B4f0uJSzuZBEWcaMRyogkAi91X72MiO6IHmAN02lByftM"
+            />
+            <span
+              class="font-manrope text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-50"
+              >User Profile</span
+            >
+          </div>
+        </div>
+      </header>
+      <!-- Canvas Content -->
+      <div class="pt-24 px-8 pb-12">
+        <!-- Page Header Area -->
+        <div class="mb-10 flex justify-between items-end">
+          <div>
+            <h2
+              class="font-manrope text-3xl font-extrabold text-on-surface tracking-tight mb-2"
+            >
+              Submission Analytics
+            </h2>
+            <p class="text-on-surface-variant font-body">
+              Overview of form performance and administrative queue.
+            </p>
+          </div>
+          <div class="flex gap-2">
+            <button
+              class="bg-surface-container-high px-4 py-2 rounded-xl text-sm font-semibold text-on-surface-variant flex items-center gap-2 hover:bg-surface-variant transition-colors"
+            >
+              <span
+                class="material-symbols-outlined text-sm"
+                data-icon="calendar_today"
+                >calendar_today</span
+              >
+              Last 30 Days
+            </button>
+            <button
+              class="editorial-gradient text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-md"
+            >
+              <span
+                class="material-symbols-outlined text-sm"
+                data-icon="download"
+                >download</span
+              >
+              Export Data
+            </button>
+          </div>
+        </div>
+        <!-- Bento Grid Metrics -->
+        <div class="grid grid-cols-12 gap-6 mb-8">
+          <!-- Large Highlight Card -->
+          <div
+            class="col-span-12 lg:col-span-4 bg-surface-container-lowest rounded-xl p-6 flex flex-col justify-between relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform duration-500"
+            >
+              <span
+                class="material-symbols-outlined text-8xl"
+                data-icon="bar_chart"
+                >bar_chart</span
+              >
+            </div>
+            <div>
+              <span
+                class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4 block"
+                >Total Submissions</span
+              >
+              <h3
+                class="font-manrope text-5xl font-extrabold text-primary tracking-tighter"
+              >
+                12,482
+              </h3>
+            </div>
+            <div class="mt-8 flex items-center gap-2 text-sm">
+              <span class="text-emerald-600 font-bold flex items-center"
+                >+12.5%</span
+              >
+              <span class="text-on-surface-variant">vs previous month</span>
+            </div>
+          </div>
+          <!-- Medium Cards -->
+          <div
+            class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container-lowest rounded-xl p-6 flex flex-col justify-between"
+          >
+            <div class="flex justify-between items-start">
+              <div>
+                <span
+                  class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1 block"
+                  >Pending Approvals</span
+                >
+                <h3
+                  class="font-manrope text-3xl font-extrabold text-on-surface"
+                >
+                  42
+                </h3>
+              </div>
+              <div
+                class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600"
+              >
+                <span
+                  class="material-symbols-outlined"
+                  data-icon="pending_actions"
+                  >pending_actions</span
+                >
+              </div>
+            </div>
+            <div class="mt-6">
+              <div
+                class="w-full bg-surface-container-low h-1.5 rounded-full overflow-hidden"
+              >
+                <div class="bg-amber-500 h-full w-[65%]"></div>
+              </div>
+              <p class="text-[11px] text-on-surface-variant mt-2 font-medium">
+                12 submissions requiring immediate attention
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container-lowest rounded-xl p-6 flex flex-col justify-between"
+          >
+            <div class="flex justify-between items-start">
+              <div>
+                <span
+                  class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1 block"
+                  >Active Forms</span
+                >
+                <h3
+                  class="font-manrope text-3xl font-extrabold text-on-surface"
+                >
+                  18
+                </h3>
+              </div>
+              <div
+                class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600"
+              >
+                <span class="material-symbols-outlined" data-icon="grid_view"
+                  >grid_view</span
+                >
+              </div>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span
+                class="px-2 py-1 bg-primary-container text-on-primary-container text-[10px] font-bold rounded uppercase"
+                >8 Internal</span
+              >
+              <span
+                class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded uppercase"
+                >10 Public</span
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Recent Activity Table & Recent Forms Asymmetric Layout -->
+        <div class="grid grid-cols-12 gap-8">
+          <!-- Main Activity Table -->
+          <div class="col-span-12 xl:col-span-8">
+            <div
+              class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm"
+            >
+              <div
+                class="px-6 py-5 flex justify-between items-center bg-surface-container-low"
+              >
+                <h4 class="font-manrope text-lg font-bold text-on-surface">
+                  Recent Activity
+                </h4>
+                <button class="text-primary text-xs font-bold hover:underline">
+                  View All Submissions
+                </button>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                  <thead class="bg-surface-container-low">
+                    <tr>
+                      <th
+                        class="px-6 py-3 text-[0.6875rem] font-bold uppercase tracking-wider text-on-surface-variant"
+                      >
+                        Submission Name
+                      </th>
+                      <th
+                        class="px-6 py-3 text-[0.6875rem] font-bold uppercase tracking-wider text-on-surface-variant"
+                      >
+                        Submitter
+                      </th>
+                      <th
+                        class="px-6 py-3 text-[0.6875rem] font-bold uppercase tracking-wider text-on-surface-variant"
+                      >
+                        Date
+                      </th>
+                      <th
+                        class="px-6 py-3 text-[0.6875rem] font-bold uppercase tracking-wider text-on-surface-variant"
+                      >
+                        Status
+                      </th>
+                      <th class="px-6 py-3"></th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-surface-container">
+                    <tr class="hover:bg-surface-bright transition-colors group">
+                      <td class="px-6 py-4">
+                        <p class="text-sm font-semibold text-on-surface">
+                          Emergency OR Access Booking
+                        </p>
+                        <p class="text-[11px] text-on-surface-variant">
+                          Form ID: #4402
+                        </p>
+                      </td>
+                      <td class="px-6 py-4 text-sm text-on-surface-variant">
+                        Dr. Sarah Jenkins
+                      </td>
+                      <td class="px-6 py-4 text-sm text-on-surface-variant">
+                        Oct 24, 14:22
+                      </td>
+                      <td class="px-6 py-4">
+                        <span
+                          class="inline-flex items-center px-2 py-1 rounded-lg text-[10px] font-bold bg-amber-100 text-amber-700 uppercase"
+                          >Pending</span
+                        >
+                      </td>
+                      <td class="px-6 py-4 text-right">
+                        <button
+                          class="p-1.5 opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-primary"
+                        >
+                          <span
+                            class="material-symbols-outlined text-lg"
+                            data-icon="visibility"
+                            >visibility</span
+                          >
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="hover:bg-surface-bright transition-colors group">
+                      <td class="px-6 py-4">
+                        <p class="text-sm font-semibold text-on-surface">
+                          Travel Expense Reimbursement
+                        </p>
+                        <p class="text-[11px] text-on-surface-variant">
+                          Form ID: #4398
+                        </p>
+                      </td>
+                      <td class="px-6 py-4 text-sm text-on-surface-variant">
+                        Marcus Thorne
+                      </td>
+                      <td class="px-6 py-4 text-sm text-on-surface-variant">
+                        Oct 24, 12:05
+                      </td>
+                      <td class="px-6 py-4">
+                        <span
+                          class="inline-flex items-center px-2 py-1 rounded-lg text-[10px] font-bold bg-primary-container text-on-primary-container uppercase"
+                          >Reviewed</span
+                        >
+                      </td>
+                      <td class="px-6 py-4 text-right">
+                        <button
+                          class="p-1.5 opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-primary"
+                        >
+                          <span
+                            class="material-symbols-outlined text-lg"
+                            data-icon="visibility"
+                            >visibility</span
+                          >
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="hover:bg-surface-bright transition-colors group">
+                      <td class="px-6 py-4">
+                        <p class="text-sm font-semibold text-on-surface">
+                          IT Equipment Request
+                        </p>
+                        <p class="text-[11px] text-on-surface-variant">
+                          Form ID: #4391
+                        </p>
+                      </td>
+                      <td class="px-6 py-4 text-sm text-on-surface-variant">
+                        Elena Rodriguez
+                      </td>
+                      <td class="px-6 py-4 text-sm text-on-surface-variant">
+                        Oct 24, 09:44
+                      </td>
+                      <td class="px-6 py-4">
+                        <span
+                          class="inline-flex items-center px-2 py-1 rounded-lg text-[10px] font-bold bg-emerald-100 text-emerald-700 uppercase"
+                          >Approved</span
+                        >
+                      </td>
+                      <td class="px-6 py-4 text-right">
+                        <button
+                          class="p-1.5 opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-primary"
+                        >
+                          <span
+                            class="material-symbols-outlined text-lg"
+                            data-icon="visibility"
+                            >visibility</span
+                          >
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="hover:bg-surface-bright transition-colors group">
+                      <td class="px-6 py-4">
+                        <p class="text-sm font-semibold text-on-surface">
+                          New Employee Onboarding
+                        </p>
+                        <p class="text-[11px] text-on-surface-variant">
+                          Form ID: #4385
+                        </p>
+                      </td>
+                      <td class="px-6 py-4 text-sm text-on-surface-variant">
+                        HR Department
+                      </td>
+                      <td class="px-6 py-4 text-sm text-on-surface-variant">
+                        Oct 23, 17:15
+                      </td>
+                      <td class="px-6 py-4">
+                        <span
+                          class="inline-flex items-center px-2 py-1 rounded-lg text-[10px] font-bold bg-amber-100 text-amber-700 uppercase"
+                          >Pending</span
+                        >
+                      </td>
+                      <td class="px-6 py-4 text-right">
+                        <button
+                          class="p-1.5 opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-primary"
+                        >
+                          <span
+                            class="material-symbols-outlined text-lg"
+                            data-icon="visibility"
+                            >visibility</span
+                          >
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- Recent Forms Sidebar / List -->
+          <div class="col-span-12 xl:col-span-4 space-y-6">
+            <div class="bg-surface-container-highest rounded-xl p-6">
+              <h4 class="font-manrope text-lg font-bold text-on-surface mb-6">
+                Frequently Used Forms
+              </h4>
+              <div class="space-y-4">
+                <div
+                  class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 group cursor-pointer hover:ring-2 hover:ring-primary/20 transition-all"
+                >
+                  <div
+                    class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      data-icon="receipt_long"
+                      >receipt_long</span
+                    >
+                  </div>
+                  <div class="flex-grow">
+                    <p class="text-sm font-bold text-on-surface">
+                      Expense Claim
+                    </p>
+                    <p class="text-[11px] text-on-surface-variant">
+                      248 submissions this week
+                    </p>
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform"
+                    data-icon="chevron_right"
+                    >chevron_right</span
+                  >
+                </div>
+                <div
+                  class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 group cursor-pointer hover:ring-2 hover:ring-primary/20 transition-all"
+                >
+                  <div
+                    class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      data-icon="work_history"
+                      >work_history</span
+                    >
+                  </div>
+                  <div class="flex-grow">
+                    <p class="text-sm font-bold text-on-surface">PTO Request</p>
+                    <p class="text-[11px] text-on-surface-variant">
+                      112 submissions this week
+                    </p>
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform"
+                    data-icon="chevron_right"
+                    >chevron_right</span
+                  >
+                </div>
+                <div
+                  class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 group cursor-pointer hover:ring-2 hover:ring-primary/20 transition-all"
+                >
+                  <div
+                    class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      data-icon="verified_user"
+                      >verified_user</span
+                    >
+                  </div>
+                  <div class="flex-grow">
+                    <p class="text-sm font-bold text-on-surface">
+                      Client Intake
+                    </p>
+                    <p class="text-[11px] text-on-surface-variant">
+                      42 submissions this week
+                    </p>
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform"
+                    data-icon="chevron_right"
+                    >chevron_right</span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Small Abstract Banner / Status -->
+            <div
+              class="editorial-gradient rounded-xl p-6 text-white relative overflow-hidden"
+            >
+              <div class="relative z-10">
+                <h5 class="font-manrope text-lg font-bold mb-2">
+                  System Health
+                </h5>
+                <p class="text-xs text-blue-100 leading-relaxed mb-4">
+                  All services are currently operational. Database
+                  synchronization completed 4 minutes ago.
+                </p>
+                <div class="flex items-center gap-2">
+                  <div
+                    class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"
+                  ></div>
+                  <span class="text-[10px] font-bold uppercase tracking-widest"
+                    >Global Status: Normal</span
+                  >
+                </div>
+              </div>
+              <div class="absolute -bottom-4 -right-4 opacity-10">
+                <span
+                  class="material-symbols-outlined text-8xl"
+                  data-icon="cloud_done"
+                  >cloud_done</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
