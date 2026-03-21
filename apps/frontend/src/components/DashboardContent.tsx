@@ -26,8 +26,8 @@ export function DashboardContent() {
 
       <div className="grid grid-cols-12 gap-6 mb-8">
         <div className="col-span-12 lg:col-span-4 bg-surface-container-lowest rounded-xl p-6 flex flex-col justify-between relative overflow-hidden group">
-          <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform duration-500">
-            <span className="material-symbols-outlined text-8xl">
+          <div className="absolute -top-3 -right-3 p-8 opacity-10 group-hover:scale-110 transition-transform duration-500 pointer-events-none">
+            <span className="material-symbols-outlined text-[9rem] leading-none text-primary/70">
               bar_chart
             </span>
           </div>
@@ -324,8 +324,8 @@ export function DashboardContent() {
                 </span>
               </div>
             </div>
-            <div className="absolute -bottom-4 -right-4 opacity-10">
-              <span className="material-symbols-outlined text-8xl">
+            <div className="absolute -bottom-5 -right-5 opacity-25 pointer-events-none">
+              <span className="material-symbols-outlined text-[9rem] leading-none text-blue-100/80">
                 cloud_done
               </span>
             </div>

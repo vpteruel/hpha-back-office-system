@@ -78,6 +78,13 @@ export function Sidebar({
         <nav className="flex-grow">
           {navItems.map((item) => {
             const active = isActive(item.id, item.path);
+            const isSubmissions = item.id === "submissions";
+
+            const iconStyle =
+              active || isSubmissions
+                ? { fontVariationSettings: '"FILL" 1' }
+                : undefined;
+
             return (
               <Link
                 key={item.id}
@@ -90,10 +97,8 @@ export function Sidebar({
                 }
               >
                 <span
-                  className={`material-symbols-outlined ${active ? "" : "opacity-70 group-hover:opacity-100"}`}
-                  style={
-                    active ? { fontVariationSettings: '"FILL" 1' } : undefined
-                  }
+                  className={`material-symbols-outlined ${active ? "text-blue-700 dark:text-blue-300" : "text-slate-500 dark:text-slate-400 opacity-70 group-hover:opacity-100"}`}
+                  style={iconStyle}
                 >
                   {item.icon}
                 </span>
