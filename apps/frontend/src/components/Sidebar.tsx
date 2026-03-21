@@ -41,10 +41,10 @@ const footerItems = [
 
 interface SidebarProps {
   className?: string;
-  isCollapsed: boolean;
+  isCollapsed?: boolean;
 }
 
-export function Sidebar({ className = "" }: SidebarProps) {
+export function Sidebar({ className = "", isCollapsed = false }: SidebarProps) {
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
 
@@ -101,7 +101,7 @@ export function Sidebar({ className = "" }: SidebarProps) {
         })}
       </nav>
 
-      <div className="mt-auto pt-6 border-t border-slate-300/30">
+      <div className="mt-auto pt-6 border-t border-slate-300/30 footer-links">
         {footerItems.map((item) => (
           <Link
             key={item.id}
