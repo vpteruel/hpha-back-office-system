@@ -1,11 +1,11 @@
 import {
-    createRootRoute,
-    createRoute,
-    createRouter,
-    Outlet,
+  createRootRoute,
+  createRoute,
+  createRouter,
+  Outlet,
 } from "@tanstack/react-router";
+import { AdminLayout } from "./components/AdminLayout";
 import { DashboardContent } from "./components/DashboardContent";
-import { ModernAdminLayout } from "./components/ModernAdminLayout";
 import { LoginPage } from "./pages/auth/LoginPage";
 import { AutomationDetail } from "./pages/automations/AutomationDetail";
 import { AutomationList } from "./pages/automations/AutomationList";
@@ -39,9 +39,9 @@ const adminRoute = createRoute({
   getParentRoute: () => rootRoute,
   id: "admin",
   component: () => (
-    <ModernAdminLayout>
+    <AdminLayout>
       <Outlet />
-    </ModernAdminLayout>
+    </AdminLayout>
   ),
 });
 
@@ -219,10 +219,7 @@ const adminRouteTree = adminRoute.addChildren([
   settingsRoute,
 ]);
 
-const routeTree = rootRoute.addChildren([
-  loginRoute,
-  adminRouteTree
-]);
+const routeTree = rootRoute.addChildren([loginRoute, adminRouteTree]);
 
 // Create and export router
 export const router = createRouter({ routeTree });
