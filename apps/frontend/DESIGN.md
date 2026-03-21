@@ -1,7 +1,7 @@
-# Design System Document: The Precision Editorial
+# Design System Document: The Forms Anywhere
 
 ## 1. Overview & Creative North Star
-The "Precision Editorial" is our Creative North Star. This design system rejects the "spreadsheet-in-a-browser" aesthetic of typical back-office tools. Instead, it treats complex data management with the authority of a high-end financial journal.
+The "Forms Anywhere" is our Creative North Star. This design system rejects the "spreadsheet-in-a-browser" aesthetic of typical back-office tools. Instead, it treats complex data management with the authority of a high-end financial journal.
 
 We move beyond the "template" look by utilizing **intentional asymmetry** and **tonal depth**. Rather than using rigid lines to contain data, we use sophisticated layering and "breathing" white space. The goal is to make a data-dense environment feel calm, curated, and premium. We don't just display data; we give it an architectural home.
 
