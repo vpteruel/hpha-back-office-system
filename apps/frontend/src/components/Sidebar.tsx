@@ -91,12 +91,12 @@ export function Sidebar({
                 onClick={onClose}
                 className={
                   active
-                    ? "border-l-[3px] border-blue-700 bg-slate-300/40 dark:bg-slate-800/40 text-blue-800 dark:text-blue-300 px-6 py-3 flex items-center gap-3"
-                    : "text-slate-600 dark:text-slate-400 px-6 py-3 flex items-center gap-3 hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-200 group"
+                    ? "border-l-[3px] border-primary bg-primary/10 text-on-surface px-6 py-3 flex items-center gap-3"
+                    : "text-on-surface-variant px-6 py-3 flex items-center gap-3 hover:text-primary transition-all duration-200 group"
                 }
               >
                 <span
-                  className={`material-symbols-outlined ${active ? "text-blue-800 dark:text-blue-300" : "text-slate-600 dark:text-slate-400 opacity-70 group-hover:opacity-100"}`}
+                  className={`material-symbols-outlined ${active ? "text-primary" : "text-on-surface-variant opacity-70 group-hover:opacity-100"}`}
                   style={iconStyle}
                 >
                   {item.icon}
@@ -112,7 +112,7 @@ export function Sidebar({
               key={item.id}
               to={item.path}
               onClick={onClose}
-              className="text-slate-500 dark:text-slate-400 px-6 py-2.5 flex items-center gap-3 hover:text-blue-700 transition-colors text-sm"
+              className="text-on-surface-variant px-6 py-2.5 flex items-center gap-3 hover:text-primary transition-colors text-sm"
             >
               <span className="material-symbols-outlined text-lg">
                 {item.icon}
