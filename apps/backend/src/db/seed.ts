@@ -1,8 +1,16 @@
 import { db } from "./index";
-import { automationRuns, automations, closedPositions, closedPositionsRuns } from "./schema";
+import { automationRuns, automations, closedPositions, closedPositionsRuns, users } from "./schema";
 
 async function main() {
   console.log("🌱 Seeding database...");
+
+  // Insert default admin user
+  const hashedPassword = await Bun.password.hash("admin123");
+  await db.insert(users).values({
+    name: "Admin",
+    email: "admin@company.com",
+    password: hashedPassword,
+  }).onConflictDoNothing();
 
   // Insert Automations
   const automationsData = [

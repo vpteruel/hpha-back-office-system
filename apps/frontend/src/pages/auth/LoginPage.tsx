@@ -1,14 +1,29 @@
 import { useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 import "./Login.css";
 
 export function LoginPage() {
   const navigate = useNavigate();
+  const { login } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you would validate credentials against the backend API here.
-    // For now, simply navigate to the root dashboard route.
-    navigate({ to: "/" });
+    setError("");
+    setLoading(true);
+
+    try {
+      await login(email, password);
+      navigate({ to: "/" });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Login failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -35,6 +50,12 @@ export function LoginPage() {
           </div>
 
           <form className="login-form" onSubmit={handleLogin}>
+            {error && (
+              <div className="login-error">
+                {error}
+              </div>
+            )}
+
             <div className="form-group">
               <label htmlFor="email">Email address</label>
               <input 
@@ -42,6 +63,8 @@ export function LoginPage() {
                 id="email" 
                 className="login-input" 
                 placeholder="name@company.com" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required 
               />
             </div>
@@ -53,6 +76,8 @@ export function LoginPage() {
                 id="password" 
                 className="login-input" 
                 placeholder="••••••••" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required 
               />
             </div>
@@ -65,8 +90,8 @@ export function LoginPage() {
               <a href="#" className="forgot-password">Forgot password?</a>
             </div>
 
-            <button type="submit" className="login-submit-btn">
-              Sign In
+            <button type="submit" className="login-submit-btn" disabled={loading}>
+              {loading ? "Signing in..." : "Sign In"}
             </button>
           </form>
         </div>
